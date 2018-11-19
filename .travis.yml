@@ -5,6 +5,6 @@ android:
     - android-28
     - extra
 script:
- - chmod +x ./gradlew build connectedCheck
+ - ./gradlew build connectedCheck
 before_install:
 - chmod +x gradlew
