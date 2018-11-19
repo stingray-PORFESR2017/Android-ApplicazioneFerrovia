@@ -8,8 +8,10 @@ android:
     - extra
     - addon-google_apis-google-28
     - sys-img-armeabi-v7a-android-28
-    - sys-img-armeabi-v7a-google_apis-28
-
+    - sys-img-armeabi-v7a-google_apis-26
+    - android-26
+    - sys-img-armeabi-v7a-android-26
+    - addon-google_apis-google-26
 
 script:
  - ./gradlew build connectedCheck
@@ -18,7 +20,7 @@ before_install:
 - yes | sdkmanager "platforms;android-28"
 - yes | sdkmanager "build-tools;28.0.3"
 # Create and start emulator.
-- echo no | android create avd --force -n test -t "android-28" --abi "google_apis/armeabi-v7a" --tag "google_apis"
+- echo no | android create avd --force -n test -t "android-26" --abi "google_apis/armeabi-v7a" --tag "google_apis"
 - emulator -avd test -no-audio -no-window &
 - android-wait-for-emulator
 - adb shell input keyevent 82 &
