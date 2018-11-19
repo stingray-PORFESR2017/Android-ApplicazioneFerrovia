@@ -19,7 +19,8 @@ android:
     - sys-img-armeabi-v7a-android-28
 
 script:
- - ./gradlew build connectedCheck
+ #- ./gradlew build connectedCheck
+ - ./gradlew test assembleRelease
 before_install:
 - chmod +x gradlew
 - yes | sdkmanager "platforms;android-28"
