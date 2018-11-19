@@ -1,5 +1,6 @@
 language: android
 jdk: oraclejdk8
+sudo: false
 android:
   components:
     - build-tools-28.0.0
@@ -11,6 +12,10 @@ before_install:
 - chmod +x gradlew
 - yes | sdkmanager "platforms;android-28"
 - yes | sdkmanager "build-tools;28.0.3"
+- echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a
+- emulator -avd test -no-skin -no-audio -no-window &
+- android-wait-for-emulator
+- adb shell input keyevent 82 &
 
 licenses:
     - 'android-sdk-preview-license-.+'
