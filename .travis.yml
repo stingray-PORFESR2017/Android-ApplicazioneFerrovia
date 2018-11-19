@@ -4,3 +4,7 @@ android:
     - build-tools-28.0.0
     - android-28
     - extra
+script:
+ - chmod +x ./gradlew build connectedCheck
+before_install:
+- chmod +x gradlew
