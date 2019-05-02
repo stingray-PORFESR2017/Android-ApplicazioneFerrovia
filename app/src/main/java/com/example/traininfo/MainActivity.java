@@ -11,6 +11,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,7 +27,6 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity implements AsyncResponse {
@@ -37,9 +38,9 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
     private final int REQUEST_LOCATION_PERMISSION = 1;
     Location mLastLocation;
     FusedLocationProviderClient mFusedLocationClient;
-    private final ArrayList<String> mnearPlace = new ArrayList<>();
-    ArrayAdapter<String> mAdapterNearPlacesDepartures;
-    ArrayAdapter<String> mAdapterNearPlacesArrivals;
+    private final ArrayList<Station> mnearPlace = new ArrayList<>();
+    StationListAdapter mAdapterNearPlacesDepartures;
+    StationListAdapter mAdapterNearPlacesArrivals;
 
     public Context context = this;
 
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
                     getLocation();
                 } else {
                     Toast.makeText(this,
-                            "rip permessi",
+                            "Permesso negato",
                             Toast.LENGTH_SHORT).show();
                 }
                 break;
@@ -121,8 +122,10 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
         String station = statusText.getText().toString();
         Log.d("TAG", station);
 
-        Intent intent = new Intent(this, StatusActivity.class);
-        startActivity(intent);
+        new AsyncTaskTrain(this, station).execute(1, 2);
+        /*Intent intent = new Intent(this, StatusActivity.class);
+        intent.putExtra("STATION", station);
+        startActivity(intent);*/
     }
 
     @Override
@@ -174,12 +177,28 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
 
         if (t == 1) {
             for (int i = 0; i < output.size(); i++) {
-                mnearPlace.add(output.get(i));
+                String station = output.get(i);
+                int rank = Integer.parseInt(station.substring(0,1));
+                Log.d("RANK", ""+rank+"d");
+                String stationName = station.substring(1);
+                //mnearPlace.add(stationName/*new Station(stationName, rank)*/);
+                mnearPlace.add(new Station(stationName, rank));
             }
 
-            Log.d("nearPlaces",mnearPlace.toString());
+            //Log.d("nearPlaces",mnearPlace.toString());
 
-            mAdapterNearPlacesDepartures = new ArrayAdapter<>(this, R.layout.row, R.id.place_text, mnearPlace);
+            mAdapterNearPlacesDepartures = new StationListAdapter(this, mnearPlace, 0);
+            RecyclerView recyclerViewDepartures = findViewById(R.id.near_places_departures);
+            recyclerViewDepartures.setAdapter(mAdapterNearPlacesDepartures);
+            recyclerViewDepartures.setLayoutManager(new LinearLayoutManager(this));
+
+            mAdapterNearPlacesArrivals = new StationListAdapter(this, mnearPlace, 1);
+            RecyclerView recyclerViewArrival = findViewById(R.id.near_places_arrival);
+            recyclerViewArrival.setAdapter(mAdapterNearPlacesArrivals);
+            recyclerViewArrival.setLayoutManager(new LinearLayoutManager(this));
+
+
+            /*mAdapterNearPlacesDepartures = new ArrayAdapter<>(this, R.layout.row, R.id.place_text, mnearPlace);
             ListView listViewDepartures = findViewById(R.id.near_places_departures);
             listViewDepartures.setAdapter(mAdapterNearPlacesDepartures);
 
@@ -201,7 +220,9 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
                     EditText arrivalsText = findViewById(R.id.arrivals_text);
                     arrivalsText.setText(mnearPlace.get(position));
                 }
-            });
+            });*/
+
+            NearPlaces.setNearPlaces(mnearPlace);
         }
     }
 
@@ -233,6 +254,8 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
                             if (location != null) {
                                 mLastLocation = location;
                                 Log.d("TAG", "Latitude: " + mLastLocation.getLatitude() + "  Longitude: " + mLastLocation.getLongitude() + "  time:" + mLastLocation.getTime());
+                                //NearPlaces.setLatitude(mLastLocation.getLatitude());
+                                //NearPlaces.setLongitude(mLastLocation.getLongitude());
                                 AsyncTaskTrain aTask = new AsyncTaskTrain(context, mLastLocation.getLatitude(), mLastLocation.getLongitude());
 
                                 aTask.delegate = (AsyncResponse) context;

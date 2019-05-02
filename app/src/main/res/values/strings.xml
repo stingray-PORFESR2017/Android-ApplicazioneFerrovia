@@ -33,5 +33,6 @@
     <string name="unipi_string">Logo UNIPI</string>
     <string name="train_number_label_string">Numero:</string>
     <string name="train_label_string">Binario:</string>
+    <string name="rank_image_string">rank_image</string>
 
 </resources>

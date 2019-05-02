@@ -32,14 +32,14 @@ public class DeparturesFrag extends Fragment {
 
     private View viewF;
 
-    private final ArrayList<String> mnearPlaces = new ArrayList<>();
-    ArrayAdapter<String> mAdapterNearPlacesDepartures;
+    private final ArrayList<Station> mnearPlaces = new ArrayList<>();
+    StationListAdapter mAdapterNearPlacesDepartures;
 
     public DeparturesFrag() {
         // Required empty public constructor
     }
 
-    @Override
+    /*@Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
@@ -78,6 +78,22 @@ public class DeparturesFrag extends Fragment {
                 }
             });
         }
+    }*/
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        ArrayList<Station> nearPlaces = NearPlaces.getNearPlaces();
+
+        for (int i = 0; i < nearPlaces.size(); i++) {
+            mnearPlaces.add(nearPlaces.get(i));
+        }
+
+        mAdapterNearPlacesDepartures = new StationListAdapter(getActivity(), mnearPlaces, 0);
+        RecyclerView recyclerViewDepartures = viewF.findViewById(R.id.near_places_departures);
+        recyclerViewDepartures.setAdapter(mAdapterNearPlacesDepartures);
+        recyclerViewDepartures.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
     @Override

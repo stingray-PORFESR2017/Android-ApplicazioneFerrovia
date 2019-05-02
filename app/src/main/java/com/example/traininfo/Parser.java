@@ -199,7 +199,7 @@ public class Parser {
             map.put("Description", getValue(e, "Description"));
             map.put("Latitude", getValue(e, "Latitude"));
             map.put("Longitude", getValue(e, "Longitude"));
-            map.put("Categoty", getValue(e, "Category"));
+            map.put("Category", getValue(e, "Category"));
 
             places.add(map);
         }

@@ -2,7 +2,12 @@ package com.example.traininfo;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 
 /**
@@ -19,12 +25,29 @@ import java.util.ArrayList;
  */
 public class StatusFrag extends Fragment {
 
-    View v;
-    private final ArrayList<String> mnearPlace = new ArrayList<>();
-    ArrayAdapter<String> mAdapterNearPlaces;
+    private View viewF;
+
+    private final ArrayList<Station> mnearPlaces = new ArrayList<>();
+    StationListAdapter mAdapterNearPlacesStatus;
 
     public StatusFrag() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        ArrayList<Station> nearPlaces= NearPlaces.getNearPlaces();
+
+        for (int i = 0; i < nearPlaces.size(); i++) {
+            mnearPlaces.add(nearPlaces.get(i));
+        }
+
+        mAdapterNearPlacesStatus = new StationListAdapter(getActivity(), mnearPlaces, 2);
+        RecyclerView recyclerViewStatus = viewF.findViewById(R.id.near_places_status);
+        recyclerViewStatus.setAdapter(mAdapterNearPlacesStatus);
+        recyclerViewStatus.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
 
@@ -32,25 +55,43 @@ public class StatusFrag extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        v = inflater.inflate(R.layout.fragment_status, container, false);
+        viewF = inflater.inflate(R.layout.fragment_status, container, false);
 
-        mnearPlace.add("PISA C.LE");
-        mnearPlace.add("ROMA C.LE");
-        mnearPlace.add("MILANO C.LE");
+        /*ArrayList<Station> output = NearPlaces.getNearPlaces();
+        for (int i = 0; i < output.size(); i++) {
+            mnearPlaces.add(output.get(i));
+        }
 
-        mAdapterNearPlaces = new ArrayAdapter<>(getActivity(), R.layout.row, R.id.place_text, mnearPlace);
-        ListView listViewDepartures = v.findViewById(R.id.near_places_status);
-        listViewDepartures.setAdapter(mAdapterNearPlaces);
+        mAdapterNearPlacesStatus = new StationListAdapter(getActivity(), mnearPlaces, 2);
+        RecyclerView recyclerViewStatus = viewF.findViewById(R.id.near_places_status);
+        recyclerViewStatus.setAdapter(mAdapterNearPlacesStatus);
+        recyclerViewStatus.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        listViewDepartures.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*AsyncTaskTrain aTask = new AsyncTaskTrain(getActivity(), NearPlaces.getLatitude(), NearPlaces.getLongitude());
+
+        aTask.delegate = this;
+        aTask.execute(5);*/
+
+        return viewF;
+    }
+
+    /*@Override
+    public void processFinish(LinkedList<String> output, int t) {
+        for (int i = 0; i < output.size(); i++) {
+            mnearPlaces.add(output.get(i));
+        }
+
+        mAdapterNearPlacesStatus = new ArrayAdapter<>(getActivity(), R.layout.row, R.id.place_text, mnearPlaces);
+        ListView listViewStatus = viewF.findViewById(R.id.near_places_status);
+        listViewStatus.setAdapter(mAdapterNearPlacesStatus);
+
+        listViewStatus.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                EditText departuresText = v.findViewById(R.id.status_text);
-                departuresText.setText(mnearPlace.get(position));
+                EditText statusText = viewF.findViewById(R.id.status_text);
+                statusText.setText(mnearPlaces.get(position));
             }
         });
-
-        return v;
-    }
+    }*/
 
 }

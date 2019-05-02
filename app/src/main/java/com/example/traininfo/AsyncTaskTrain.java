@@ -69,12 +69,18 @@ public class AsyncTaskTrain extends AsyncTask<Integer, String, String> {
             int i;
             for (i = 0; i < places.size(); i++) {
                 if (places.get(i).containsValue(station)) {
-                    Intent intent = new Intent(context, DAInfo.class);
-                    if (integers[1] == 1) {
-                        intent.putExtra(TYPE, context.getString(R.string.arrivals_intent));
+                    Intent intent;
+                    if (integers[1] == 2) {
+                        intent = new Intent(context, StatusActivity.class);
                     } else {
-                        intent.putExtra(TYPE, context.getString(R.string.departures_intent));
+                        intent = new Intent(context, DAInfo.class);
+                        if (integers[1] == 1) {
+                            intent.putExtra(TYPE, context.getString(R.string.arrivals_intent));
+                        } else {
+                            intent.putExtra(TYPE, context.getString(R.string.departures_intent));
+                        }
                     }
+
                     intent.putExtra(STATION, station);
                     intent.putExtra(PLACE, places.get(i).get("ID"));
                     context.startActivity(intent);
@@ -193,7 +199,9 @@ public class AsyncTaskTrain extends AsyncTask<Integer, String, String> {
                 Location.distanceBetween(latitude, longitude, latitudePlace, longitudePlace, result);
                 if (result[0] < NEAR_KM) {
                     Log.d("TAG", "Entro 10km");
-                    mnearPlaces.add(places.get(i).get("Name"));
+                    String stationName = places.get(i).get("Name");
+                    String stationRank = places.get(i).get("Category");
+                    mnearPlaces.add(stationRank + stationName);
                 }
             }
 

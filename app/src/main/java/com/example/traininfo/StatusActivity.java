@@ -1,5 +1,6 @@
 package com.example.traininfo;
 
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
@@ -27,6 +28,10 @@ public class StatusActivity extends AppCompatActivity implements AsyncResponse{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status);
+
+        Intent intent = getIntent();
+        String station = intent.getStringExtra("STATION");
+        setTitle("Stato enti "+ station);
 
         aTask.delegate = this;
 
