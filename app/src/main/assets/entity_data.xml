@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <entity>
+        <name>Lampadina1</name>
+        <position>Binario1</position>
+        <currentValue>60Watt</currentValue>
+        <status>ok</status>
+    </entity>
+    <entity>
+        <name>Lampadina2</name>
+        <position>Binario2</position>
+        <currentValue>80Watt</currentValue>
+        <status>alert</status>
+    </entity>
+    <entity>
+        <name>Lampadina3</name>
+        <position>Binario3</position>
+        <currentValue>100Watt</currentValue>
+        <status>off</status>
+    </entity>
+    <entity>
+        <name>Lampadina4</name>
+        <position>Binario4</position>
+        <currentValue>50Watt</currentValue>
+        <status>ok</status>
+    </entity>
+</resources>
