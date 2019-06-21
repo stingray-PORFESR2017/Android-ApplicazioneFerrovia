@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">TrainInfo</string>
+    <string name="departures_tab">Partenze</string>
+    <string name="arrivals_tab">Arrivi</string>
+    <string name="info_tab">Info</string>
+    <string name="status_tab">Stato</string>
+    <string name="search_string">Cerca</string>
+    <string name="departures_hint">Partenze da</string>
+    <string name="da_activity_name">Info</string>
+    <string name="status_activity_name">Stato Enti Stazione</string>
+    <string name="arrivals_hint">arrivi in</string>
+    <string name="train_label_text">XXXXX</string>
+    <string name="info_hint">Inserisci treno</string>
+    <string name="arrivals_intent">ARRIVALS</string>
+    <string name="departures_intent">DEPARTURES</string>
+    <string name="number_train_string">Numero Treno:</string>
+    <string name="customer_string">Proprietario:</string>
+    <string name="category_string">Categoria:</string>
+    <string name="last_check_string">Ultimo Rilevamento</string>
+    <string name="place_string">- Località</string>
+    <string name="delay_string">- Ritardo</string>
+    <string name="time_string">- Tempo</string>
+    <string name="status_hint">Stato enti stazioni</string>
+    <string name="switch_string">On/Off  </string>
+    <string name="status_string">STATO</string>
+    <string name="current_value_string">Valore corrente:</string>
+    <string name="position_string">Posizione:</string>
+    <string name="entity_string">Nome Ente:</string>
+    <string name="status_image_string">status_semaphore</string>
+    <string name="togglebutton_string">ToggleButton</string>
+    <string name="stingray_string">SmarT INtelliGent RAilwaY (STINGRAY) è un progetto di trasferimento tecnologico finanziato dalla Regione Toscana. POR FESR Toscana 2014–2020 ASSE 1 - AZIONE 1.1.5 – Sub-azione a1 “Progetti strategici di ricerca e sviluppo (Bando 1) - Decreto 24.05.2017 n. 7165</string>
+    <string name="cnr_string">Logo CNR</string>
+    <string name="unipi_string">Logo UNIPI</string>
+    <string name="train_number_label_string">Numero:</string>
+    <string name="train_label_string">Binario:</string>
+    <string name="rank_image_string">rank_image</string>
+
+</resources>
