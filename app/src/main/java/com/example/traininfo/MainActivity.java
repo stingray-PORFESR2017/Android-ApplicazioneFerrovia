@@ -15,7 +15,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -73,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
         tabLayout.addTab(tabLayout.newTab().setText(R.string.arrivals_tab));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.status_tab));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.info_tab));
+        tabLayout.addTab(tabLayout.newTab().setText("About"));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
@@ -119,13 +119,29 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
 
     public void searchS(View view) {
         EditText statusText = findViewById(R.id.status_text);
-        String station = statusText.getText().toString();
-        Log.d("TAG", station);
+        String entity = statusText.getText().toString();
+        Log.d("TAG", entity);
 
-        new AsyncTaskTrain(this, station).execute(1, 2);
-        /*Intent intent = new Intent(this, StatusActivity.class);
-        intent.putExtra("STATION", station);
-        startActivity(intent);*/
+        //       new AsyncTaskTrain(this, entity).execute(6, 2);
+        Intent intent = new Intent(this, StatusActivity.class);
+        intent.putExtra("STATION", entity);
+        startActivity(intent);
+    }
+    public void searchAll(View view) {
+        Intent intent = new Intent(this, StatusActivity.class);
+        intent.putExtra("STATION", "All");
+        startActivity(intent);
+    }
+
+    public void searchInfo(View view) {
+        EditText info = findViewById(R.id.info_text);
+        String tNumber = info.getText().toString();
+        Integer numTrain = Integer.parseInt(tNumber);
+
+        AsyncTaskTrain aTask = new AsyncTaskTrain(this);
+
+        aTask.delegate = this;
+        aTask.execute(4, numTrain);
     }
 
     @Override
@@ -189,58 +205,26 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
 
             mAdapterNearPlacesDepartures = new StationListAdapter(this, mnearPlace, 0);
             RecyclerView recyclerViewDepartures = findViewById(R.id.near_places_departures);
-            recyclerViewDepartures.setAdapter(mAdapterNearPlacesDepartures);
-            recyclerViewDepartures.setLayoutManager(new LinearLayoutManager(this));
-
+            if(recyclerViewDepartures!=null) {
+                recyclerViewDepartures.setAdapter(mAdapterNearPlacesDepartures);
+                recyclerViewDepartures.setLayoutManager(new LinearLayoutManager(this));
+            }
             mAdapterNearPlacesArrivals = new StationListAdapter(this, mnearPlace, 1);
             RecyclerView recyclerViewArrival = findViewById(R.id.near_places_arrival);
-            recyclerViewArrival.setAdapter(mAdapterNearPlacesArrivals);
-            recyclerViewArrival.setLayoutManager(new LinearLayoutManager(this));
-
-
-            /*mAdapterNearPlacesDepartures = new ArrayAdapter<>(this, R.layout.row, R.id.place_text, mnearPlace);
-            ListView listViewDepartures = findViewById(R.id.near_places_departures);
-            listViewDepartures.setAdapter(mAdapterNearPlacesDepartures);
-
-            listViewDepartures.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    EditText departuresText = findViewById(R.id.departures_text);
-                    departuresText.setText(mnearPlace.get(position));
-                }
-            });
-
-            mAdapterNearPlacesArrivals = new ArrayAdapter<>(this, R.layout.row, R.id.place_text, mnearPlace);
-            ListView listViewArrival = findViewById(R.id.near_places_arrival);
-            listViewArrival.setAdapter(mAdapterNearPlacesArrivals);
-
-            listViewArrival.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    EditText arrivalsText = findViewById(R.id.arrivals_text);
-                    arrivalsText.setText(mnearPlace.get(position));
-                }
-            });*/
-
+            if(recyclerViewArrival!=null) {
+                recyclerViewArrival.setAdapter(mAdapterNearPlacesArrivals);
+                recyclerViewArrival.setLayoutManager(new LinearLayoutManager(this));
+            }
             NearPlaces.setNearPlaces(mnearPlace);
         }
     }
 
     @Override
-    public void processFinish(ArrayList<Status> output, int t) {
+    public void processFinish(ArrayList<Cmad> output, int t) {
 
     }
 
-    public void searchInfo(View view) {
-        EditText info = findViewById(R.id.info_text);
-        String tNumber = info.getText().toString();
-        Integer numTrain = Integer.parseInt(tNumber);
 
-        AsyncTaskTrain aTask = new AsyncTaskTrain(this);
-
-        aTask.delegate = this;
-        aTask.execute(4, numTrain);
-    }
 
     public void getLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
