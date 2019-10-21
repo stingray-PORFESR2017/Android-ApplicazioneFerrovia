@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    android:background="#F8F3E8"
+    >
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F8F3E8"
+        tools:context=".CmadExtendedInfoActivity">
+
+        <TextView
+            android:id="@+id/madillWireDigitalInfo2"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="36dp"
+            android:background="#9CF7EFA9"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/madillLongitude" />
+
+        <TextView
+            android:id="@+id/madillType"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#9CF7EFA9"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/madillRevision"
+            app:layout_constraintTop_toBottomOf="@+id/madillMacAdr" />
+
+        <TextView
+            android:id="@+id/madillComandoLampada"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#9CF7EFA9"
+            android:drawableRight="@drawable/lampcommand"
+
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/madillLongitude" />
+
+        <TextView
+            android:id="@+id/madillTensioneLampada"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#9CF7EFA9"
+            android:drawableRight="@drawable/lamptension"
+            android:padding="4dp"
+
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/madillCorrenteLampada"
+            app:layout_constraintTop_toBottomOf="@+id/madillPotenzaLampada" />
+
+        <TextView
+            android:id="@+id/madillScorta"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="#9CF7EFA9"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintStart_toEndOf="@+id/madillCorrenteLampada"
+            app:layout_constraintTop_toBottomOf="@+id/madillVitaLampada" />
+
+        <TextView
+            android:id="@+id/madillPotenzaLampada"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#9CF7EFA9"
+            android:drawableRight="@drawable/lamppower"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/madillComandoLampada"
+            app:layout_constraintTop_toBottomOf="@+id/madillDescription" />
+
+        <TextView
+            android:id="@+id/madillVitaLampada"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="#9CF7EFA9"
+            android:drawableRight="@drawable/lamplife"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintStart_toEndOf="@+id/madillComandoLampada"
+            app:layout_constraintTop_toBottomOf="@+id/madillLatitude" />
+
+        <TextView
+            android:id="@+id/madillCorrenteLampada"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+
+            android:background="#9CF7EFA9"
+            android:drawableRight="@drawable/lampcurrent"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/madillComandoLampada" />
+
+        <TextView
+            android:id="@+id/madillDescription"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#9CF7EFA9"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/madillLongitude"
+            app:layout_constraintTop_toBottomOf="@+id/madillType" />
+
+        <TextView
+            android:id="@+id/madillLongitude"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#9CF7EFA9"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/madillRevision" />
+
+        <TextView
+            android:id="@+id/madillLatitude"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="#9CF7EFA9"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintStart_toEndOf="@+id/madillLongitude"
+            app:layout_constraintTop_toBottomOf="@+id/madillPosition" />
+
+        <TextView
+            android:id="@+id/madillDigitalInfo"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#9CF7EFA9"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/madillCorrenteLampada"
+            app:layout_constraintTop_toBottomOf="@+id/madillTensioneLampada" />
+
+        <TextView
+            android:id="@+id/madillPosition"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="#9CF7EFA9"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintStart_toEndOf="@+id/madillRevision"
+            app:layout_constraintTop_toBottomOf="@+id/madillHeader" />
+
+        <TextView
+            android:id="@+id/madillRevision"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#9CF7EFA9"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/madillDate" />
+
+        <TextView
+            android:id="@+id/madillHeader"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="#9CF7EFA9"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintStart_toEndOf="@+id/madillDate"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/madillMacAdr"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#9CF7EFA9"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/madillDate"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/madillDate"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#9CF7EFA9"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
