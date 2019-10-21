@@ -43,11 +43,11 @@ public class StatusFrag extends Fragment {
         for (int i = 0; i < nearPlaces.size(); i++) {
             mnearPlaces.add(nearPlaces.get(i));
         }
-
+/*
         mAdapterNearPlacesStatus = new StationListAdapter(getActivity(), mnearPlaces, 2);
         RecyclerView recyclerViewStatus = viewF.findViewById(R.id.near_places_status);
         recyclerViewStatus.setAdapter(mAdapterNearPlacesStatus);
-        recyclerViewStatus.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerViewStatus.setLayoutManager(new LinearLayoutManager(getActivity()));*/
     }
 
 

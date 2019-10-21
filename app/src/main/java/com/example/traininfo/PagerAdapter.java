@@ -20,6 +20,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
             case 1: return new ArrivalsFrag();
             case 2: return new StatusFrag();
             case 3: return new InfoFrag();
+            case 4: return new AboutFrag();
             default: return null;
         }
     }
