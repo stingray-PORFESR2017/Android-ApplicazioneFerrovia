@@ -1,9 +1,10 @@
+
 <resources>
     <string name="app_name">TrainInfo</string>
     <string name="departures_tab">Partenze</string>
     <string name="arrivals_tab">Arrivi</string>
     <string name="info_tab">Info</string>
-    <string name="status_tab">Stato</string>
+    <string name="status_tab">Enti</string>
     <string name="search_string">Cerca</string>
     <string name="departures_hint">Partenze da</string>
     <string name="da_activity_name">Info</string>
@@ -20,7 +21,7 @@
     <string name="place_string">- Località</string>
     <string name="delay_string">- Ritardo</string>
     <string name="time_string">- Tempo</string>
-    <string name="status_hint">Stato enti stazioni</string>
+    <string name="status_hint">Inserire macaddress</string>
     <string name="switch_string">On/Off  </string>
     <string name="status_string">STATO</string>
     <string name="current_value_string">Valore corrente:</string>

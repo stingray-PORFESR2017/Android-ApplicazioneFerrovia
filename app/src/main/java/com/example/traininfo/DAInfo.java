@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -69,7 +68,7 @@ public class DAInfo extends AppCompatActivity implements AsyncResponse {
     }
 
     @Override
-    public void processFinish(ArrayList<Status> output, int t) {
+    public void processFinish(ArrayList<Cmad> output, int t) {
 
     }
 }

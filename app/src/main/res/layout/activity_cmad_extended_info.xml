@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F8F3E8"
+        tools:context=".CmadExtendedInfoActivity">
+
+        <TextView
+            android:id="@+id/fattorePotenzaL3"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="#E4DEF8D8"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintStart_toEndOf="@+id/fattorePotenzaL2"
+            app:layout_constraintTop_toBottomOf="@+id/potenzaReattivaL3" />
+
+        <TextView
+            android:id="@+id/fattorePotenzaL2"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+
+            android:layout_marginEnd="8dp"
+            android:background="#E4DEF8D8"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/potenzaReattivaL2" />
+
+        <TextView
+            android:id="@+id/energiaReattiva"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="#E4DEF8D8"
+            android:drawableRight="@drawable/reactiveenergy"
+            android:gravity="center"
+
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintStart_toEndOf="@+id/energiaAttiva"
+            app:layout_constraintTop_toBottomOf="@+id/lux" />
+        <!--
+        <TextView
+            android:id="@+id/cmadCrc"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="TextView"
+
+            android:textSize="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cmadRaw" />
+    -->
+        <TextView
+            android:id="@+id/cmadRevision"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="8dp"
+            android:autoText="true"
+            android:background="#E4DEF8D8"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/cmadPosition"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:autoSizeTextType="uniform" />
+
+        <TextView
+            android:id="@+id/cmadPosition"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="8dp"
+            android:background="#E4DEF8D8"
+            android:gravity="center|clip_vertical|center_horizontal"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:autoSizeTextType="uniform" />
+
+        <TextView
+            android:id="@+id/tempEst"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+
+            android:background="#E4DEF8D8"
+            android:drawableRight="@drawable/temperature"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cmadPosition" />
+
+        <TextView
+            android:id="@+id/lux"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="#E4DEF8D8"
+
+            android:drawableRight="@drawable/lampcurrent"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintStart_toEndOf="@+id/tempEst"
+            app:layout_constraintTop_toBottomOf="@+id/cmadDescription" />
+
+        <TextView
+            android:id="@+id/tensioneL1"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#E4DEF8D8"
+
+            android:drawableRight="@drawable/tension"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/tensioneL2"
+            app:layout_constraintTop_toBottomOf="@+id/tempSuolo" />
+
+        <TextView
+            android:id="@+id/tensioneL2"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+
+            android:background="#E4DEF8D8"
+            android:drawableRight="@drawable/tension"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/energiaAttiva" />
+
+        <TextView
+            android:id="@+id/tensioneL3"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="#E4DEF8D8"
+
+            android:drawableRight="@drawable/tension"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintStart_toEndOf="@+id/tensioneL2"
+            app:layout_constraintTop_toBottomOf="@+id/energiaReattiva" />
+
+        <TextView
+            android:id="@+id/tempSuolo"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#E4DEF8D8"
+            android:drawableRight="@drawable/soiltemperature"
+            android:gravity="center"
+
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/energiaAttiva"
+            app:layout_constraintTop_toBottomOf="@+id/lux" />
+
+        <TextView
+            android:id="@+id/energiaAttiva"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#E4DEF8D8"
+            android:drawableRight="@drawable/activeenergy"
+
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tempEst" />
+        <!--
+        <TextView
+            android:id="@+id/cmadRaw"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="#E4DEF8D8"
+            android:padding="4dp"
+            android:textAlignment="center"
+
+            android:text="TextView"
+            android:textSize="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fattorePotenzaL1" />
+    -->
+        <TextView
+            android:id="@+id/correnteL1"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#E4DEF8D8"
+
+            android:drawableRight="@drawable/current"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/correnteL2"
+            app:layout_constraintTop_toBottomOf="@+id/tensioneL1" />
+
+        <TextView
+            android:id="@+id/correnteL2"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#E4DEF8D8"
+
+            android:drawableRight="@drawable/current"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tensioneL2" />
+
+        <TextView
+            android:id="@+id/correnteL3"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+
+            android:background="#E4DEF8D8"
+            android:drawableRight="@drawable/current"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintStart_toEndOf="@+id/correnteL2"
+            app:layout_constraintTop_toBottomOf="@+id/tensioneL3" />
+
+        <TextView
+            android:id="@+id/potenzaAttivaL1"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+
+            android:layout_marginEnd="8dp"
+            android:background="#E4DEF8D8"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/potenzaAttivaL2"
+            app:layout_constraintTop_toBottomOf="@+id/correnteL1" />
+
+        <TextView
+            android:id="@+id/potenzaAttivaL2"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+
+            android:background="#E4DEF8D8"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/correnteL2" />
+
+        <TextView
+            android:id="@+id/potenzaAttivaL3"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+
+            android:layout_marginTop="8dp"
+            android:background="#E4DEF8D8"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintStart_toEndOf="@+id/potenzaAttivaL2"
+            app:layout_constraintTop_toBottomOf="@+id/correnteL3" />
+
+        <TextView
+            android:id="@+id/potenzaReattivaL1"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#E4DEF8D8"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/potenzaReattivaL2"
+            app:layout_constraintTop_toBottomOf="@+id/potenzaAttivaL1" />
+
+        <TextView
+            android:id="@+id/potenzaReattivaL2"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+
+            android:layout_marginEnd="8dp"
+            android:background="#E4DEF8D8"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/potenzaAttivaL2" />
+
+        <TextView
+            android:id="@+id/potenzaReattivaL3"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+
+            android:layout_marginTop="8dp"
+            android:background="#E4DEF8D8"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintStart_toEndOf="@+id/potenzaReattivaL2"
+            app:layout_constraintTop_toBottomOf="@+id/potenzaAttivaL3" />
+
+        <TextView
+            android:id="@+id/fattorePotenzaL1"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:gravity="center"
+
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#E4DEF8D8"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/fattorePotenzaL2"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/potenzaReattivaL1" />
+
+        <TextView
+            android:id="@+id/cmadDescription"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:background="#E4DEF8D8"
+            android:padding="4dp"
+            android:gravity="center"
+
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintStart_toEndOf="@+id/cmadPosition"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:autoSizeTextType="uniform" />
+
+        <TextView
+            android:id="@+id/cmadDigitalInfo"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#E4DEF8D8"
+            android:gravity="center"
+
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/tempEst"
+            app:layout_constraintTop_toBottomOf="@+id/cmadRevision" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_cmadExtendedInfo"
+            android:layout_width="match_parent"
+            android:layout_height="424dp"
+            android:layout_marginTop="24dp"
+            android:focusable="false"
+            app:layout_constraintTop_toBottomOf="@+id/fattorePotenzaL2"
+            tools:layout_editor_absoluteX="0dp" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

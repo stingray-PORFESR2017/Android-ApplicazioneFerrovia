@@ -38,6 +38,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".CmadExtendedInfoActivity"
+            android:parentActivityName=".StatusActivity"
+            android:theme="@style/AppTheme2">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.traininfo.MainActivity" />
+        </activity>
+        <activity
+            android:name=".MadredExtendedInfoActivity"
+            android:parentActivityName=".CmadExtendedInfoActivity"
+            android:label="Info Madred"
+            android:theme="@style/AppTheme2">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.traininfo.MainActivity" />
+        </activity>
+        <activity
+            android:name=".MadillExtendedInfoActivity"
+            android:parentActivityName=".CmadExtendedInfoActivity"
+            android:label="Info Madill"
+            android:theme="@style/AppTheme2">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.traininfo.MainActivity" />
+        </activity>
+
     </application>
 
 </manifest>

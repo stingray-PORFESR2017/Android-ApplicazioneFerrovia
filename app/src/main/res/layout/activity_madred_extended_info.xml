@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    android:background="#F8F3E8"
+    >
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F8F3E8"
+        tools:context=".CmadExtendedInfoActivity">
+
+        <TextView
+            android:id="@+id/madredTemperatura1"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#FAD4C8"
+            android:drawableRight="@drawable/temperature"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/madredTemperatura2"
+            app:layout_constraintTop_toBottomOf="@+id/madredValoreCorrenteCavo10" />
+
+        <TextView
+            android:id="@+id/madredWireDigitalInfo2"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="36dp"
+            android:background="#FAD4C8"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/madredLongitude" />
+
+        <TextView
+            android:id="@+id/madredValoreCorrenteCavo1"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#FAD4C8"
+            android:padding="4dp"
+            android:drawableRight="@drawable/current"
+
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/madredValoreCorrenteCavo2"
+            app:layout_constraintTop_toBottomOf="@+id/madredDescription" />
+
+        <TextView
+            android:id="@+id/madredType"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#FAD4C8"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/madredRevision"
+            app:layout_constraintTop_toBottomOf="@+id/madredMacAdr" />
+
+        <TextView
+            android:id="@+id/madredValoreCorrenteCavo3"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="#FAD4C8"
+            android:padding="4dp"
+            android:drawableRight="@drawable/current"
+
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintStart_toEndOf="@+id/madredValoreCorrenteCavo2"
+            app:layout_constraintTop_toBottomOf="@+id/madredLatitude" />
+
+        <TextView
+            android:id="@+id/madredValoreCorrenteCavo5"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#FAD4C8"
+            android:drawableRight="@drawable/current"
+
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/madredValoreCorrenteCavo2" />
+
+        <TextView
+            android:id="@+id/madredValoreCorrenteCavo6"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:drawableRight="@drawable/current"
+
+            android:background="#FAD4C8"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintStart_toEndOf="@+id/madredValoreCorrenteCavo5"
+            app:layout_constraintTop_toBottomOf="@+id/madredValoreCorrenteCavo3" />
+
+        <TextView
+            android:id="@+id/madredValoreCorrenteCavo8"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#FAD4C8"
+            android:drawableRight="@drawable/current"
+
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/madredValoreCorrenteCavo5" />
+
+        <TextView
+            android:id="@+id/madredValoreCorrenteCavo10"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#FAD4C8"
+            android:padding="4dp"
+            android:text="TextView"
+            android:drawableRight="@drawable/current"
+
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/madredValoreCorrenteCavo11"
+            app:layout_constraintTop_toBottomOf="@+id/madredValoreCorrenteCavo7" />
+
+        <TextView
+            android:id="@+id/madredValoreCorrenteCavo12"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="#FAD4C8"
+            android:drawableRight="@drawable/current"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintStart_toEndOf="@+id/madredValoreCorrenteCavo11"
+            app:layout_constraintTop_toBottomOf="@+id/madredValoreCorrenteCavo9" />
+
+        <TextView
+            android:id="@+id/madredValoreCorrenteCavo4"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#FAD4C8"
+            android:drawableRight="@drawable/current"
+
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/madredValoreCorrenteCavo5"
+            app:layout_constraintTop_toBottomOf="@+id/madredValoreCorrenteCavo1" />
+
+        <TextView
+            android:id="@+id/madredValoreCorrenteCavo7"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#FAD4C8"
+            android:drawableRight="@drawable/current"
+
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/madredValoreCorrenteCavo8"
+            app:layout_constraintTop_toBottomOf="@+id/madredValoreCorrenteCavo4" />
+
+        <TextView
+            android:id="@+id/madredValoreCorrenteCavo9"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="#FAD4C8"
+            android:drawableRight="@drawable/current"
+
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintStart_toEndOf="@+id/madredValoreCorrenteCavo8"
+            app:layout_constraintTop_toBottomOf="@+id/madredValoreCorrenteCavo6" />
+
+        <TextView
+            android:id="@+id/madredValoreCorrenteCavo11"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#FAD4C8"
+            android:padding="4dp"
+            android:drawableRight="@drawable/current"
+
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/madredValoreCorrenteCavo8" />
+
+        <TextView
+            android:id="@+id/madredValoreCorrenteCavo2"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:drawableRight="@drawable/current"
+
+            android:background="#FAD4C8"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/madredLongitude" />
+
+        <TextView
+            android:id="@+id/madredDescription"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#FAD4C8"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/madredLongitude"
+            app:layout_constraintTop_toBottomOf="@+id/madredType" />
+
+        <TextView
+            android:id="@+id/madredLongitude"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#FAD4C8"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/madredRevision" />
+
+        <TextView
+            android:id="@+id/madredLatitude"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="#FAD4C8"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintStart_toEndOf="@+id/madredLongitude"
+            app:layout_constraintTop_toBottomOf="@+id/madredPosition" />
+
+        <TextView
+            android:id="@+id/madredDigitalInfo"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#FAD4C8"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/madredWireDigitalInfo"
+            app:layout_constraintTop_toBottomOf="@+id/madredTemperatura1" />
+
+        <TextView
+            android:id="@+id/madredWireDigitalInfo"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#FAD4C8"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/madredTemperatura2" />
+
+        <TextView
+            android:id="@+id/madredTemperatura2"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#FAD4C8"
+            android:drawableRight="@drawable/temperature"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/madredValoreCorrenteCavo11" />
+
+        <TextView
+            android:id="@+id/madredPosition"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="#FAD4C8"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintStart_toEndOf="@+id/madredRevision"
+            app:layout_constraintTop_toBottomOf="@+id/madredHeader" />
+
+        <TextView
+            android:id="@+id/madredRevision"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#FAD4C8"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/madredDate" />
+
+        <TextView
+            android:id="@+id/madredHeader"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="#FAD4C8"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintStart_toEndOf="@+id/madredDate"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/madredMacAdr"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#FAD4C8"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/madredDate"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/madredDate"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#FAD4C8"
+            android:padding="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
+

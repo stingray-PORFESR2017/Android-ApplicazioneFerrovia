@@ -53,7 +53,6 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
             int pos = getLayoutPosition();
             String station = mStationList.get(pos).getStation();
             new AsyncTaskTrain(context, station).execute(1, type);
-
         }
     }
 

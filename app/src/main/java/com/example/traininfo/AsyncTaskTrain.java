@@ -27,7 +27,7 @@ public class AsyncTaskTrain extends AsyncTask<Integer, String, String> {
     private final ArrayList<DATrain> mTrainList = new ArrayList<>();
     private final LinkedList<String> mdetail = new LinkedList<>();
     private final LinkedList<String> mnearPlaces = new LinkedList<>();
-    private final ArrayList<com.example.traininfo.Status> mEntity = new ArrayList<>();
+    private final ArrayList<Cmad> mEntity = new ArrayList<>();
 
     private double latitude;
     private double longitude;
@@ -209,17 +209,29 @@ public class AsyncTaskTrain extends AsyncTask<Integer, String, String> {
         }
 
         if (integers[0] == 6) {
-            ArrayList<HashMap<String, String>> entity = Parser.getEntity(context);
+            ArrayList<Cmad> entity;
 
-            for (int i = 0; i < entity.size(); i++) {
-                String name = entity.get(i).get("Name");
-                String pos = entity.get(i).get("Position");
-                String cVal = entity.get(i).get("CurrentValue");
-                String status = entity.get(i).get("Status");
-                com.example.traininfo.Status s = new com.example.traininfo.Status(name, pos, cVal, status);
-                mEntity.add(s);
+            try {
+                entity= Parser.getEntity(context,station);
+            } catch (TimeoutException e) {
+                return "timeout";
+            } catch (InterruptedException e) {
+                return "interrupt";
+            } catch (ExecutionException e) {
+                return "execute";
             }
 
+	/*		Intent intent;
+            intent = new Intent(context, StatusActivity.class);
+			intent.putExtra(STATION, station);
+            intent.putExtra(PLACE, places.get(i).get("ID"));
+            context.startActivity(intent);
+*/
+	        if(entity==null)
+	            return "nonE";
+            for (int i = 0; i < entity.size(); i++) {
+                mEntity.add(entity.get(i));
+            }
             return "entity";
         }
 
@@ -233,6 +245,10 @@ public class AsyncTaskTrain extends AsyncTask<Integer, String, String> {
     protected void onPostExecute(String result) {
         if (result.equals("nonL")) {
             Toast.makeText(context, "Stazione inesistente", Toast.LENGTH_SHORT).show();
+        }
+        if (result.equals("nonE")) {
+            Toast.makeText(context, "Ente inesistente", Toast.LENGTH_SHORT).show();
+            delegate.processFinish(mEntity,0);
         }
 
         if (result.equals("DA")) {
@@ -260,7 +276,7 @@ public class AsyncTaskTrain extends AsyncTask<Integer, String, String> {
         }
 
         if (result.equals("entity")) {
-            delegate.processFinish(mEntity, 0);
+            delegate.processFinish(mEntity, 1);
         }
     }
 }
