@@ -8,7 +8,7 @@
     <string name="departures_hint">Partenze da</string>
     <string name="da_activity_name">Info</string>
     <string name="status_activity_name">Stato Enti Stazione</string>
-    <string name="arrivals_hint">arrivi in</string>
+    <string name="arrivals_hint">Arrivi in</string>
     <string name="train_label_text">XXXXX</string>
     <string name="info_hint">Inserisci treno</string>
     <string name="arrivals_intent">ARRIVALS</string>
@@ -35,10 +35,10 @@
     <string name="train_label_string">Binario:</string>
     <string name="rank_image_string">rank_image</string>
     <string name="login">Login</string>
-    
+
     <string name="titolo_login">Autenticazione</string>
-    <string name="text_nome_utente">Nome utente</string>
-    <string name="password">Password</string>
+    <string name="username_hint">Nome utente</string>
+    <string name="password_hint">Password</string>
     <string name="button_login">Login</string>
 
 </resources>
