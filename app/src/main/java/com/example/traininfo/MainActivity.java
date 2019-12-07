@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
         tabLayout.addTab(tabLayout.newTab().setText(R.string.arrivals_tab));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.status_tab));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.info_tab));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.login));
         tabLayout.addTab(tabLayout.newTab().setText("About"));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);

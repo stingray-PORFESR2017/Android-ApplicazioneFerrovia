@@ -1,4 +1,3 @@
-
 <resources>
     <string name="app_name">TrainInfo</string>
     <string name="departures_tab">Partenze</string>
@@ -35,5 +34,11 @@
     <string name="train_number_label_string">Numero:</string>
     <string name="train_label_string">Binario:</string>
     <string name="rank_image_string">rank_image</string>
+    <string name="login">Login</string>
+    
+    <string name="titolo_login">Autenticazione</string>
+    <string name="text_nome_utente">Nome utente</string>
+    <string name="password">Password</string>
+    <string name="button_login">Login</string>
 
 </resources>
