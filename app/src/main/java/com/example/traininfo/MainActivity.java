@@ -137,8 +137,13 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
     public void searchInfo(View view) {
         EditText info = findViewById(R.id.info_text);
         String tNumber = info.getText().toString();
-        Integer numTrain = Integer.parseInt(tNumber);
-
+        Integer numTrain;
+        try {
+            numTrain = Integer.parseInt(tNumber);
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, R.string.info_train_name_not_valid,Toast.LENGTH_SHORT).show();
+            return;
+        }
         AsyncTaskTrain aTask = new AsyncTaskTrain(this);
 
         aTask.delegate = this;
