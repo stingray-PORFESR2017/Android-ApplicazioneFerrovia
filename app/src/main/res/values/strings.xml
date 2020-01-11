@@ -4,6 +4,8 @@
     <string name="arrivals_tab">Arrivi</string>
     <string name="info_tab">Info</string>
     <string name="status_tab">Enti</string>
+    <string name="login_tab">Login</string>
+    <string name="about_tab">About</string>
     <string name="search_string">Cerca</string>
     <string name="departures_hint">Partenze da</string>
     <string name="da_activity_name">Info</string>
@@ -34,7 +36,6 @@
     <string name="train_number_label_string">Numero:</string>
     <string name="train_label_string">Binario:</string>
     <string name="rank_image_string">rank_image</string>
-    <string name="login">Login</string>
     <string name="titolo_login">Autenticazione</string>
     <string name="username_hint">Nome utente</string>
     <string name="password_hint">Password</string>
