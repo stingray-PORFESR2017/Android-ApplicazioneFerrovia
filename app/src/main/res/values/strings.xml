@@ -35,10 +35,9 @@
     <string name="train_label_string">Binario:</string>
     <string name="rank_image_string">rank_image</string>
     <string name="login">Login</string>
-
     <string name="titolo_login">Autenticazione</string>
     <string name="username_hint">Nome utente</string>
     <string name="password_hint">Password</string>
     <string name="button_login">Login</string>
-
+    <string name="button_logout">Logout</string>
 </resources>
