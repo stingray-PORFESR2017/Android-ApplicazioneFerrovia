@@ -157,6 +157,13 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
 
     @Override
     public void processFinish(LinkedList<String> output, int t) {
+        //fix per ricerca treno 11879, esistente (visibile dall'app stessa) ma che fa crashare l'app
+        if(output.isEmpty()) {
+            Toast.makeText(this,
+                    R.string.error_loading_train_information,
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
         if (t == 0) {
             mPlace.clear();
             Log.d("TAG", "processFinish");

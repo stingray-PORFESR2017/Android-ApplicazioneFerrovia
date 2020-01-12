@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -39,6 +40,8 @@ public class InfoFrag extends Fragment {
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_info, container, false);
+        EditText editText=v.findViewById(R.id.info_text);
+        editText.setTransformationMethod(null);
 
         /*for (int i = 0; i < 30; i++) {
             mPlace.add("LOCALITA'" + i + "\nNUMERO TRENO" + i + "ORA" + i + " RITARDO"+ i +

@@ -28,7 +28,7 @@
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/info_hint"
-        android:inputType="textNoSuggestions"
+        android:inputType="numberPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="UnusedAttribute" />

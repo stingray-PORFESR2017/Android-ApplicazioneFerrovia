@@ -42,4 +42,5 @@
     <string name="button_login">Login</string>
     <string name="button_logout">Logout</string>
     <string name="info_train_name_not_valid">Numero treno inserito non valido</string>
+    <string name="error_loading_train_information">Errore durante il caricamento delle informazioni del treno</string>
 </resources>
