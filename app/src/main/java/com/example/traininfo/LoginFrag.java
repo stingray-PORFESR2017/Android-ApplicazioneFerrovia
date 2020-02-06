@@ -1,5 +1,7 @@
 package com.example.traininfo;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewDebug;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -46,6 +49,7 @@ public class LoginFrag extends Fragment {
                 if(loginManager.isSet()) {
                     loginManager.deleteCredential();
                 } else {
+                    hideKeyboard(getContext(), viewF);
                     loginManager.writeCredentials(usertxt.getText().toString(), passtxt.getText().toString());
                 }
 
@@ -73,5 +77,10 @@ public class LoginFrag extends Fragment {
         passtxt.setVisibility(View.INVISIBLE);
         passtxt.setText(null);
         btn_login.setText(R.string.button_logout);
+    }
+
+    public static void hideKeyboard(Context context, View view) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }
