@@ -5,6 +5,7 @@ import android.content.ClipboardManager;
 import android.content.Intent;
 import java.util.ArrayList;
 
+import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,8 +15,10 @@ import android.view.Display;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 
 public class CmadExtendedInfoActivity extends AppCompatActivity implements CmadExtendedInfoListAdapter.OnCmadExtendedInfoListener{
@@ -52,6 +55,9 @@ public class CmadExtendedInfoActivity extends AppCompatActivity implements CmadE
     private TextView mCrc;
     private ArrayList<String> s=new ArrayList<>();
     private ArrayList<TextView> t=new ArrayList<>();
+
+    private ToggleButton toggle_luci;
+    private ToggleButton toggle_resistenze;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,6 +119,32 @@ public class CmadExtendedInfoActivity extends AppCompatActivity implements CmadE
         mEnergiaReattiva = findViewById(R.id.energiaReattiva);
         //         mRawBase64 =findViewById(R.id.cmadRaw);
         //         mCrc =findViewById(R.id.cmadCrc);
+
+
+        //gestione toggle button
+        toggle_luci= findViewById(R.id.toggleLuci);
+        toggle_resistenze = findViewById(R.id.toggleResistenze);
+
+        toggle_luci.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+
+                } else {
+
+                }
+            }
+        });
+
+        toggle_resistenze.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+
+                } else {
+
+                }
+            }
+        });
+
 
         mCmadRevision.setText("CMAD_REVISION\n   " + ml.getCmadRevision());
         mCmadPosition.setText("CMAD_POSITION\n " + ml.getCmadPosition());

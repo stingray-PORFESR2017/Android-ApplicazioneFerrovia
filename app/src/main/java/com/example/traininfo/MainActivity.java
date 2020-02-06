@@ -27,6 +27,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.ResourceBundle;
 
 public class MainActivity extends AppCompatActivity implements AsyncResponse {
 
@@ -236,7 +237,6 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
     public void processFinish(ArrayList<Cmad> output, int t) {
 
     }
-
 
 
     public void getLocation() {

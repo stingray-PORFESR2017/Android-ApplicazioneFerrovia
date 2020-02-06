@@ -3,6 +3,7 @@ package com.example.traininfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewDebug;
@@ -10,13 +11,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+
 public class LoginFrag extends Fragment {
 
     public View viewF;
     private LoginManager loginManager;
-    public TextView usertxt;
-    public TextView passtxt;
-    public Button btn_login;
+    private static TextView usertxt;
+    private static TextView passtxt;
+    private static Button btn_login;
 
     public LoginFrag() {
         //costruttore vuoto richiesto
@@ -42,35 +44,34 @@ public class LoginFrag extends Fragment {
         btn_login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if(loginManager.isSet()) {
-                    if(loginManager.deleteCredential()) {
-                        usertxt.setVisibility(View.VISIBLE);
-                        passtxt.setVisibility(View.VISIBLE);
-                        btn_login.setText(R.string.button_login);
-                    }
+                    loginManager.deleteCredential();
                 } else {
-                    if(loginManager.writeCredentials(usertxt.getText().toString(), passtxt.getText().toString())) {
-                        usertxt.setVisibility(View.INVISIBLE);
-                        usertxt.setText(null);
-                        passtxt.setVisibility(View.INVISIBLE);
-                        passtxt.setText(null);
-                        btn_login.setText(R.string.button_logout);
-                    }
+                    loginManager.writeCredentials(usertxt.getText().toString(), passtxt.getText().toString());
                 }
 
             }
         });
 
         if(loginManager.isSet()) {
-            usertxt.setVisibility(View.INVISIBLE);
-            passtxt.setVisibility(View.INVISIBLE);
-            btn_login.setText(R.string.button_logout);
+            interface_logout();
         } else {
-            usertxt.setVisibility(View.VISIBLE);
-            passtxt.setVisibility(View.VISIBLE);
-            btn_login.setText(R.string.button_login);
+            interface_login();
         }
 
         return viewF;
     }
 
+    static void interface_login () {
+        usertxt.setVisibility(View.VISIBLE);
+        passtxt.setVisibility(View.VISIBLE);
+        btn_login.setText(R.string.button_login);
+    }
+
+    static void interface_logout () {
+        usertxt.setVisibility(View.INVISIBLE);
+        usertxt.setText(null);
+        passtxt.setVisibility(View.INVISIBLE);
+        passtxt.setText(null);
+        btn_login.setText(R.string.button_logout);
+    }
 }

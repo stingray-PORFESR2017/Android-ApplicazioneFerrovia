@@ -43,4 +43,8 @@
     <string name="button_logout">Logout</string>
     <string name="info_train_name_not_valid">Numero treno inserito non valido</string>
     <string name="error_loading_train_information">Errore durante il caricamento delle informazioni del treno</string>
+    <string name="cmad_toggle_ill_on">Accendi luci</string>
+    <string name="cmad_toggle_ill_off">Spegni luci</string>
+    <string name="cmad_toggle_red_on">Accendi resistenze</string>
+    <string name="cmad_toggle_red_off">Spegni resistenze</string>
 </resources>

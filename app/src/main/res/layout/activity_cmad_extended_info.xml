@@ -12,15 +12,37 @@
         android:background="#F8F3E8"
         tools:context=".CmadExtendedInfoActivity">
 
+        <ToggleButton
+            android:id="@+id/toggleResistenze"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textOff="@string/cmad_toggle_red_on"
+            android:textOn="@string/cmad_toggle_red_off"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/fattorePotenzaL3"
+            app:layout_constraintTop_toBottomOf="@+id/fattorePotenzaL3" />
+
+        <ToggleButton
+            android:id="@+id/toggleLuci"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textOff="@string/cmad_toggle_ill_on"
+            android:textOn="@string/cmad_toggle_ill_off"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/fattorePotenzaL1"
+            app:layout_constraintTop_toBottomOf="@+id/fattorePotenzaL1" />
+
         <TextView
             android:id="@+id/fattorePotenzaL3"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-
             android:layout_marginStart="8dp"
+
             android:layout_marginTop="8dp"
             android:background="#E4DEF8D8"
+            android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
             android:textAlignment="center"
@@ -462,10 +484,11 @@
             android:id="@+id/recycler_view_cmadExtendedInfo"
             android:layout_width="match_parent"
             android:layout_height="424dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="72dp"
             android:focusable="false"
-            app:layout_constraintTop_toBottomOf="@+id/fattorePotenzaL2"
-            tools:layout_editor_absoluteX="0dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fattorePotenzaL2" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

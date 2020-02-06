@@ -2,23 +2,21 @@ package com.example.traininfo;
 
 import android.content.Context;
 import android.util.Log;
-
+import android.widget.Toast;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 
-public class LoginManager {
+
+class LoginManager {
     private static String username;
     private static String password;
-    //private String imei;
     private File userfile;
     private File passfile;
     private final String filename_username = "login_user";
     private final String filename_password = "login_password";
     private final File path;
-    private final Context context;
+    private static Context context;
     private static boolean isSet;
 
     LoginManager(Context c) {
@@ -26,8 +24,8 @@ public class LoginManager {
         path= c.getFilesDir();
         this.userfile = new File(path, filename_username);
         this.passfile = new File(path, filename_password);
-        username=readFile(userfile);
-        password=readFile(passfile);
+        username = readFile(userfile);
+        password = readFile(passfile);
 
     }
 
@@ -39,7 +37,7 @@ public class LoginManager {
             inputStream.read(bytes);
             st= new String(bytes);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.d("LoginManager", "File non presente"+file.getAbsolutePath());
             isSet=false;
             return "";
         }
@@ -47,36 +45,62 @@ public class LoginManager {
         return st;
     }
 
-    boolean writeCredentials (String u, String p) {
-        FileOutputStream userstream;
-        FileOutputStream passwstream;
-        try {
-            //scrittura username
-            userstream= new FileOutputStream(this.userfile);
-            userstream.write(u.getBytes());
-            userstream.close();
 
-            //scrittura password
-            passwstream= new FileOutputStream(this.passfile);
-            passwstream.write(p.getBytes());
-            passwstream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
 
-        username=u;
-        password=p;
-        isSet=true;
-        Log.d("LoginManager","Credenziali archiviate correttamente");
+    void writeCredentials (final String u, final String p) {
 
-        return true;
+        AsyncTaskVerifyCredential verifyCredential= new AsyncTaskVerifyCredential(u, p, context, new AsyncTaskVerifyCredential.AsyncLoginResponse() {
+            @Override
+            public void loginResponse(boolean result) {
+                if (result){
+                    FileOutputStream userstream;
+
+                    FileOutputStream passwstream;
+
+                    try {
+                        //scrittura username
+                        userstream= new FileOutputStream(userfile);
+                        userstream.write(u.getBytes());
+                        userstream.close();
+
+                        //scrittura password
+                        passwstream= new FileOutputStream(passfile);
+                        passwstream.write(p.getBytes());
+                        passwstream.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        isSet=false;
+                        LoginFrag.interface_login();
+                        return;
+                    }
+
+                    username=u;
+                    password=p;
+
+
+                    isSet=true;
+                    LoginFrag.interface_logout();
+                    Toast.makeText(context, "Login effettuato", Toast.LENGTH_SHORT).show();
+                    Log.d("LoginManager","Credenziali archiviate correttamente");
+                    return;
+                } else {
+                    LoginFrag.interface_login();
+                    isSet=false;
+                    Toast.makeText(context, "Credenziali non corrette", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+            }
+        });
+        verifyCredential.execute();
+
     }
 
     boolean deleteCredential() {
         if(userfile.delete() && passfile.delete()) {
             Log.d("LoginManager","Credenziali rimosse correttamente");
             isSet=false;
+            LoginFrag.interface_login();
             return true;
         } else {
             Log.d("LoginManager","Errore eliminazione credenziali");
@@ -84,16 +108,16 @@ public class LoginManager {
         }
     }
 
-    boolean isSet() {
+    static boolean isSet() {
         return  isSet;
     }
 
-    String getUsername() {
-        return username;
+    static String getUsername() {
+        return isSet() ? username : null;
     }
 
-    String getPassword() {
-        return password;
+    static String getPassword() {
+        return isSet() ? password : null;
     }
 
 }
