@@ -102,6 +102,8 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
+        //inizializzazione del login manager
+        new LoginManager(getApplicationContext());
         getLocation();
     }
 

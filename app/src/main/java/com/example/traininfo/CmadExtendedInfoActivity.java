@@ -5,7 +5,6 @@ import android.content.ClipboardManager;
 import android.content.Intent;
 import java.util.ArrayList;
 
-import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,10 +14,9 @@ import android.view.Display;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 
 public class CmadExtendedInfoActivity extends AppCompatActivity implements CmadExtendedInfoListAdapter.OnCmadExtendedInfoListener{
@@ -56,8 +54,10 @@ public class CmadExtendedInfoActivity extends AppCompatActivity implements CmadE
     private ArrayList<String> s=new ArrayList<>();
     private ArrayList<TextView> t=new ArrayList<>();
 
-    private ToggleButton toggle_luci;
-    private ToggleButton toggle_resistenze;
+    private Button buttonLuciOn;
+    private Button buttonLuciOff;
+    private Button buttonRedOn;
+    private Button buttonRedOff;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,29 +121,38 @@ public class CmadExtendedInfoActivity extends AppCompatActivity implements CmadE
         //         mCrc =findViewById(R.id.cmadCrc);
 
 
-        //gestione toggle button
-        toggle_luci= findViewById(R.id.toggleLuci);
-        toggle_resistenze = findViewById(R.id.toggleResistenze);
+        //gestione bottoni comandi
+        buttonRedOn= findViewById(R.id.buttonRedOn);
+        buttonRedOff = findViewById(R.id.buttonRedOff);
+        buttonLuciOn= findViewById(R.id.buttonLuciOn);
+        buttonLuciOff= findViewById(R.id.buttonLuciOff);
 
-        toggle_luci.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
+        buttonLuciOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AsyncTaskCommander(getApplicationContext(), Command.ON, entityType.LUCE, ml.getEntity(), null).execute();            }
+        });
 
-                } else {
+        buttonLuciOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AsyncTaskCommander(getApplicationContext(), Command.OFF, entityType.LUCE, ml.getEntity(), null).execute();            }
+        });
 
-                }
+        buttonRedOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AsyncTaskCommander(getApplicationContext(), Command.ON, entityType.SCALDINA, ml.getEntity(), null).execute();
             }
         });
 
-        toggle_resistenze.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-
-                } else {
-
-                }
+        buttonRedOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AsyncTaskCommander(getApplicationContext(), Command.OFF, entityType.SCALDINA, ml.getEntity(), null).execute();
             }
         });
+
 
 
         mCmadRevision.setText("CMAD_REVISION\n   " + ml.getCmadRevision());

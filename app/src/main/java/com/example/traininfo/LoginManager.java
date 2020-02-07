@@ -11,10 +11,10 @@ import java.io.FileOutputStream;
 class LoginManager {
     private static String username;
     private static String password;
-    private File userfile;
-    private File passfile;
-    private final String filename_username = "login_user";
-    private final String filename_password = "login_password";
+    private static File userfile;
+    private static File passfile;
+    private static final String filename_username = "login_user";
+    private static final String filename_password = "login_password";
     private final File path;
     private static Context context;
     private static boolean isSet;
@@ -47,7 +47,7 @@ class LoginManager {
 
 
 
-    void writeCredentials (final String u, final String p) {
+    static void writeCredentials (final String u, final String p) {
 
         AsyncTaskVerifyCredential verifyCredential= new AsyncTaskVerifyCredential(u, p, context, new AsyncTaskVerifyCredential.AsyncLoginResponse() {
             @Override
@@ -80,13 +80,13 @@ class LoginManager {
 
                     isSet=true;
                     LoginFrag.interface_logout();
-                    Toast.makeText(context, "Login effettuato", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.login_success, Toast.LENGTH_SHORT).show();
                     Log.d("LoginManager","Credenziali archiviate correttamente");
                     return;
                 } else {
                     LoginFrag.interface_login();
                     isSet=false;
-                    Toast.makeText(context, "Credenziali non corrette", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.incorrect_credential, Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -96,7 +96,7 @@ class LoginManager {
 
     }
 
-    boolean deleteCredential() {
+    static boolean deleteCredential() {
         if(userfile.delete() && passfile.delete()) {
             Log.d("LoginManager","Credenziali rimosse correttamente");
             isSet=false;

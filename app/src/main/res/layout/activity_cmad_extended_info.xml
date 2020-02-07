@@ -12,27 +12,45 @@
         android:background="#F8F3E8"
         tools:context=".CmadExtendedInfoActivity">
 
-        <ToggleButton
-            android:id="@+id/toggleResistenze"
+        <Button
+            android:id="@+id/buttonRedOn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:textOff="@string/cmad_toggle_red_on"
-            android:textOn="@string/cmad_toggle_red_off"
+            android:text="@string/cmad_toggle_red_on"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/fattorePotenzaL3"
             app:layout_constraintTop_toBottomOf="@+id/fattorePotenzaL3" />
 
-        <ToggleButton
-            android:id="@+id/toggleLuci"
+        <Button
+            android:id="@+id/buttonRedOff"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/cmad_toggle_red_off"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/buttonRedOn"
+            app:layout_constraintStart_toStartOf="@+id/buttonRedOn"
+            app:layout_constraintTop_toBottomOf="@+id/buttonRedOn" />
+
+        <Button
+            android:id="@+id/buttonLuciOn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:textOff="@string/cmad_toggle_ill_on"
-            android:textOn="@string/cmad_toggle_ill_off"
+            android:text="@string/cmad_toggle_ill_on"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/fattorePotenzaL1"
             app:layout_constraintTop_toBottomOf="@+id/fattorePotenzaL1" />
+
+        <Button
+            android:id="@+id/buttonLuciOff"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/cmad_toggle_ill_off"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/buttonLuciOn"
+            app:layout_constraintStart_toStartOf="@+id/buttonLuciOn"
+            app:layout_constraintTop_toBottomOf="@+id/buttonLuciOn" />
 
         <TextView
             android:id="@+id/fattorePotenzaL3"
@@ -484,7 +502,7 @@
             android:id="@+id/recycler_view_cmadExtendedInfo"
             android:layout_width="match_parent"
             android:layout_height="424dp"
-            android:layout_marginTop="72dp"
+            android:layout_marginTop="115dp"
             android:focusable="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

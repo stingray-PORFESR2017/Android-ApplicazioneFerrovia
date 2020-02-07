@@ -24,7 +24,7 @@ class AsyncTaskVerifyCredential extends AsyncTask<Void, Void, Boolean> {
     private Context context;
 
     private final String login_accepted_response="OK";
-    private final String login_refused_responde="You cannot access to this resource"; //per ora il server non risponde nulla
+    private final String login_refused_response="You cannot access to this resource"; //per ora il server non risponde nulla
     private final String AuthInfo_url= "https://stingray.isti.cnr.it:8443/serviziosupervisionestazione/CMAD/AuthInfo/";
 
 
@@ -95,7 +95,7 @@ class AsyncTaskVerifyCredential extends AsyncTask<Void, Void, Boolean> {
         String response;
         try {
             response= future.get();
-            Log.d("RISPOSTA", response);
+            Log.d("RISPOSTA LOGIN", response);
 
         } catch (InterruptedException e) {
             e.printStackTrace();

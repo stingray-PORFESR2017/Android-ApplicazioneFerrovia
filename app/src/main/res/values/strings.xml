@@ -47,4 +47,16 @@
     <string name="cmad_toggle_ill_off">Spegni luci</string>
     <string name="cmad_toggle_red_on">Accendi resistenze</string>
     <string name="cmad_toggle_red_off">Spegni resistenze</string>
+    <string name="login_success">Login effettuato</string>
+    <string name="incorrect_credential">Credenziali non corrette</string>
+    <string name="ill_all_on">Tutte le luci sono state accese</string>
+    <string name="ill_all_off">Tutte le luci sono state spente</string>
+    <string name="ill_single_on">La luce è stata accesa</string>
+    <string name="ill_single_off">La luce è stata spenta</string>
+    <string name="red_all_on">Tutte le scaldine sono state accese</string>
+    <string name="red_all_off">Tutte le scaldine sono state spente</string>
+    <string name="red_single_on">La scaldina è stata accesa</string>
+    <string name="red_single_off">La scaldina è stata spenta</string>
+    <string name="command_without_login">Non è possibile inviare comandi senza effettuare il login</string>
+    <string name="command_error">Errore durante l\'invio del comando</string>
 </resources>

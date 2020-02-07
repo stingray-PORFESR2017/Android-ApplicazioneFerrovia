@@ -41,22 +41,21 @@ public class LoginFrag extends Fragment {
         usertxt= viewF.findViewById(R.id.username);
         passtxt= viewF.findViewById(R.id.password);
         btn_login=viewF.findViewById(R.id.btn_login);
-        loginManager= new LoginManager(getContext());
 
         //listener per il bottone di login
         btn_login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(loginManager.isSet()) {
-                    loginManager.deleteCredential();
+                if(LoginManager.isSet()) {
+                    LoginManager.deleteCredential();
                 } else {
                     hideKeyboard(getContext(), viewF);
-                    loginManager.writeCredentials(usertxt.getText().toString(), passtxt.getText().toString());
+                    LoginManager.writeCredentials(usertxt.getText().toString(), passtxt.getText().toString());
                 }
 
             }
         });
 
-        if(loginManager.isSet()) {
+        if(LoginManager.isSet()) {
             interface_logout();
         } else {
             interface_login();
