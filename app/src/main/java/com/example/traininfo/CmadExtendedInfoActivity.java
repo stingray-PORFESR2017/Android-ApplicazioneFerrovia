@@ -266,12 +266,14 @@ public class CmadExtendedInfoActivity extends AppCompatActivity implements CmadE
             intent = new Intent(this, MadredExtendedInfoActivity.class);
             intent.putExtra("madred",madredList.get(position));
             intent.putExtra("number",Integer.toString(position+1));
+            intent.putExtra("cmad_addr", ml.getEntity());
             startActivity(intent);
         }
         else{
             intent = new Intent(this, MadillExtendedInfoActivity.class);
             intent.putExtra("madill",madillList.get(position-madredList.size()));
             intent.putExtra("number",Integer.toString(1+position-madredList.size()));
+            intent.putExtra("cmad_addr", ml.getEntity());
             startActivity(intent);
         }
 
