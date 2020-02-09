@@ -8,9 +8,6 @@ import java.util.ArrayList;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -154,7 +151,7 @@ public class MadillExtendedInfoActivity extends AppCompatActivity {
                     ClipboardManager clipboard = (ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
                     ClipData clip = ClipData.newPlainText("text", this.textToCopy);
                     clipboard.setPrimaryClip(clip);
-                    Toast.makeText(getApplicationContext(), "Copiato negli appunti",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.copied_to_clipboard,Toast.LENGTH_SHORT).show();
                 }
             });
         }

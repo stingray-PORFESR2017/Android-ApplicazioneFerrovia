@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TrainInfo</string>
+    <string name="app_name">STINGRAY</string>
     <string name="departures_tab">Partenze</string>
     <string name="arrivals_tab">Arrivi</string>
     <string name="info_tab">Info</string>
@@ -59,5 +59,5 @@
     <string name="red_single_off">La scaldina è stata spenta</string>
     <string name="command_without_login">Non è possibile inviare comandi senza effettuare il login</string>
     <string name="command_error">Errore durante l\'invio del comando</string>
-
+    <string name="copied_to_clipboard">Copiato negli appunti</string>
 </resources>

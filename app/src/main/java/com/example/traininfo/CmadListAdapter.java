@@ -49,7 +49,7 @@ public class CmadListAdapter extends RecyclerView.Adapter<CmadListAdapter.Status
                     String h=s.replace("MAC_ADR : ","");
                     ClipData clip = ClipData.newPlainText("text", h);
                     clipboard.setPrimaryClip(clip);
-                    Toast.makeText(context.getApplicationContext(), "Copiato negli appunti",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context.getApplicationContext(), R.string.copied_to_clipboard,Toast.LENGTH_SHORT).show();
 
 
                 }
@@ -62,7 +62,7 @@ public class CmadListAdapter extends RecyclerView.Adapter<CmadListAdapter.Status
                     String h=s.replace("CMAD_LONGITUDE: ","");
                     ClipData clip = ClipData.newPlainText("text", h);
                     clipboard.setPrimaryClip(clip);
-                    Toast.makeText(context.getApplicationContext(), "Copiato negli appunti",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context.getApplicationContext(), R.string.copied_to_clipboard,Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -74,7 +74,7 @@ public class CmadListAdapter extends RecyclerView.Adapter<CmadListAdapter.Status
                     String h=s.replace("CMAD_LATITUDE: ","");
                     ClipData clip = ClipData.newPlainText("text", h);
                     clipboard.setPrimaryClip(clip);
-                    Toast.makeText(context.getApplicationContext(), "Copiato negli appunti",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context.getApplicationContext(), R.string.copied_to_clipboard,Toast.LENGTH_SHORT).show();
 
                 }
             });

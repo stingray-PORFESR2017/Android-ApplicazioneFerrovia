@@ -238,7 +238,7 @@ public class CmadExtendedInfoActivity extends AppCompatActivity implements CmadE
                     ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
                     ClipData clip = ClipData.newPlainText("text", this.textToCopy);
                     clipboard.setPrimaryClip(clip);
-                    Toast.makeText(getApplicationContext(), "Copiato negli appunti",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.copied_to_clipboard,Toast.LENGTH_SHORT).show();
                 }
             });
         }
