@@ -5,4 +5,8 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="ic_launcher_background">#00866C</color>
+    <color name="background_item_cmad_info">#E4DEF8D8</color>
+    <color name="background_item_red_info">#FAD4C8</color>
+    <color name="background_item_ill_info">#9CF7EFA9</color>
+    <color name="background_cmad_ill_red">#F8F3E8</color>
 </resources>

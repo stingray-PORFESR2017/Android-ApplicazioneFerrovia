@@ -9,7 +9,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F8F3E8"
+        android:background="@color/background_cmad_ill_red"
         tools:context=".CmadExtendedInfoActivity">
 
         <Button
@@ -74,10 +74,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:gravity="center"
-
             android:layout_marginEnd="8dp"
+
             android:background="#E4DEF8D8"
+            android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
             android:textAlignment="center"
@@ -122,7 +122,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
             android:autoText="true"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
@@ -140,7 +140,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:gravity="center|clip_vertical|center_horizontal"
             android:padding="4dp"
             android:text="TextView"
@@ -160,7 +160,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
 
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:drawableRight="@drawable/temperature"
             android:gravity="center"
             android:padding="4dp"
@@ -178,7 +178,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
 
             android:drawableRight="@drawable/lampcurrent"
             android:gravity="center"
@@ -195,7 +195,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
 
             android:drawableRight="@drawable/tension"
             android:gravity="center"
@@ -214,7 +214,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
 
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:drawableRight="@drawable/tension"
             android:gravity="center"
             android:padding="4dp"
@@ -231,7 +231,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
 
             android:drawableRight="@drawable/tension"
             android:gravity="center"
@@ -248,7 +248,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:drawableRight="@drawable/soiltemperature"
             android:gravity="center"
 
@@ -266,7 +266,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:drawableRight="@drawable/activeenergy"
 
             android:gravity="center"
@@ -299,14 +299,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
 
             android:drawableRight="@drawable/current"
             android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
             android:textAlignment="center"
-            android:textSize="10dp"
+            android:textSize="10sp"
             app:layout_constraintEnd_toStartOf="@+id/correnteL2"
             app:layout_constraintTop_toBottomOf="@+id/tensioneL1" />
 
@@ -317,7 +317,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
 
             android:drawableRight="@drawable/current"
             android:gravity="center"
@@ -336,7 +336,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
 
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:drawableRight="@drawable/current"
             android:gravity="center"
             android:padding="4dp"
@@ -351,10 +351,10 @@
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:gravity="center"
-
             android:layout_marginEnd="8dp"
-            android:background="#E4DEF8D8"
+
+            android:background="@color/background_item_cmad_info"
+            android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
             android:textAlignment="center"
@@ -370,7 +370,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
 
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
@@ -387,7 +387,7 @@
             android:layout_marginStart="8dp"
 
             android:layout_marginTop="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
@@ -400,11 +400,11 @@
             android:id="@+id/potenzaReattivaL1"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-
             android:layout_marginTop="8dp"
+
             android:layout_marginEnd="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
+            android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
             android:textAlignment="center"
@@ -418,10 +418,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:gravity="center"
-
             android:layout_marginEnd="8dp"
-            android:background="#E4DEF8D8"
+
+            android:background="@color/background_item_cmad_info"
+            android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
             android:textAlignment="center"
@@ -437,7 +437,7 @@
             android:layout_marginStart="8dp"
 
             android:layout_marginTop="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
@@ -451,11 +451,11 @@
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:gravity="center"
-
             android:layout_marginTop="8dp"
+
             android:layout_marginEnd="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
+            android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
             android:textAlignment="center"
@@ -471,9 +471,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
-            android:background="#E4DEF8D8"
-            android:padding="4dp"
+            android:background="@color/background_item_cmad_info"
             android:gravity="center"
+            android:padding="4dp"
 
             android:text="TextView"
             android:textAlignment="center"
@@ -488,7 +488,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:gravity="center"
 
             android:padding="4dp"
