@@ -45,6 +45,11 @@ class AsyncTaskCommander extends AsyncTask<Void, Void, Boolean> {
 
     @Override
     protected Boolean doInBackground(Void... voids) {
+        //non si possono inviare comandi se non si è autenticati
+        if(!LoginManager.isSet()) {
+            Log.d("AsyncTaskCommander", "Comando non inviato: non si è autenticati");
+            return false;
+        }
 
         RequestQueue queue = Volley.newRequestQueue(context);
         RequestFuture<String> future = RequestFuture.newFuture();
