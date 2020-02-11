@@ -201,11 +201,8 @@ class AsyncTaskCommander extends AsyncTask<Void, Void, Boolean> {
     }
 
     private String getUrlKey () {
-        if(ente_addr!=null) {
-            return cmad_addr+"+"+ente_addr;
-        } else {
             return cmad_addr;
-        }
+
     }
 
 
