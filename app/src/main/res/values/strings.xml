@@ -60,4 +60,5 @@
     <string name="command_without_login">Non è possibile inviare comandi senza effettuare il login</string>
     <string name="command_error">Errore durante l\'invio del comando</string>
     <string name="copied_to_clipboard">Copiato negli appunti</string>
+    <string name="no_internet_connection">Nessuna connessione a Internet disponibile</string>
 </resources>

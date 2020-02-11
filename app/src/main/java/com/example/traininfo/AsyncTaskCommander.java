@@ -1,6 +1,8 @@
 package com.example.traininfo;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.provider.Settings;
 import android.util.Base64;
@@ -66,6 +68,7 @@ class AsyncTaskCommander extends AsyncTask<Void, Void, Boolean> {
                 String creds = String.format("%s:%s",LoginManager.getUsername(), LoginManager.getPassword());
                 String auth = "Basic " + Base64.encodeToString(creds.getBytes(), Base64.DEFAULT);
                 headers.put("Authorization", auth);
+                Log.d("AsyncTaskCommander", headers.toString());
                 return headers;
             }
 
@@ -86,7 +89,7 @@ class AsyncTaskCommander extends AsyncTask<Void, Void, Boolean> {
                          getMacEnte_xml() +
                         "</JCMADCommand>";
 
-                Log.d("LoginManager", postData);
+                Log.d("AsyncTaskCommander", postData);
                 try {
                     return postData.getBytes(getParamsEncoding());
                 } catch (UnsupportedEncodingException uee) {
@@ -167,9 +170,12 @@ class AsyncTaskCommander extends AsyncTask<Void, Void, Boolean> {
         } else {
             if(!LoginManager.isSet()) {
                 Toast.makeText(context, R.string.command_without_login, Toast.LENGTH_SHORT).show();
+            } else if (!hasInternetConnection()) {
+                Toast.makeText(context, R.string.no_internet_connection, Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(context, R.string.command_error , Toast.LENGTH_SHORT).show();
             }
+
         }
     }
 
@@ -203,6 +209,13 @@ class AsyncTaskCommander extends AsyncTask<Void, Void, Boolean> {
     private String getUrlKey () {
             return cmad_addr;
 
+    }
+
+    private boolean hasInternetConnection() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworks = connectivityManager.getActiveNetworkInfo();
+        return activeNetworks != null && activeNetworks.isConnected();
     }
 
 
