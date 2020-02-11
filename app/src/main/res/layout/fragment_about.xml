@@ -117,7 +117,7 @@
             android:id="@+id/supervisor2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Guseppe Anastasi"
+            android:text="Giuseppe Anastasi"
             android:textSize="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
