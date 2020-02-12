@@ -4,13 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_cmad_ill_red"
     android:padding="5dp">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_cmad_ill_red"
         tools:context=".CmadExtendedInfoActivity">
 
         <Button
@@ -60,7 +58,7 @@
             android:layout_marginStart="8dp"
 
             android:layout_marginTop="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
@@ -77,7 +75,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
 
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
@@ -93,7 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:drawableRight="@drawable/reactiveenergy"
             android:gravity="center"
 
