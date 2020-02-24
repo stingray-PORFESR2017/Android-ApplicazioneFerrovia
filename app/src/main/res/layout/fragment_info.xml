@@ -10,28 +10,27 @@
         android:id="@+id/search_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
         android:onClick="searchInfo"
         android:text="@string/search_string"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.65"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/info_text"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="OnClick"/>
+        tools:ignore="OnClick" />
 
     <EditText
         android:id="@+id/info_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/info_hint"
-        android:inputType="textNoSuggestions"
+        android:inputType="numberPassword"
         app:layout_constraintEnd_toStartOf="@+id/search_info"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="UnusedAttribute" />
 

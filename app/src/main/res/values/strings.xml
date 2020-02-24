@@ -1,15 +1,16 @@
-
 <resources>
-    <string name="app_name">TrainInfo</string>
+    <string name="app_name">STINGRAY</string>
     <string name="departures_tab">Partenze</string>
     <string name="arrivals_tab">Arrivi</string>
     <string name="info_tab">Info</string>
     <string name="status_tab">Enti</string>
+    <string name="login_tab">Login</string>
+    <string name="about_tab">About</string>
     <string name="search_string">Cerca</string>
     <string name="departures_hint">Partenze da</string>
     <string name="da_activity_name">Info</string>
     <string name="status_activity_name">Stato Enti Stazione</string>
-    <string name="arrivals_hint">arrivi in</string>
+    <string name="arrivals_hint">Arrivi in</string>
     <string name="train_label_text">XXXXX</string>
     <string name="info_hint">Inserisci treno</string>
     <string name="arrivals_intent">ARRIVALS</string>
@@ -35,5 +36,29 @@
     <string name="train_number_label_string">Numero:</string>
     <string name="train_label_string">Binario:</string>
     <string name="rank_image_string">rank_image</string>
-
+    <string name="titolo_login">Autenticazione</string>
+    <string name="username_hint">Nome utente</string>
+    <string name="password_hint">Password</string>
+    <string name="button_login">Login</string>
+    <string name="button_logout">Logout</string>
+    <string name="info_train_name_not_valid">Numero treno inserito non valido</string>
+    <string name="error_loading_train_information">Errore durante il caricamento delle informazioni del treno</string>
+    <string name="cmad_toggle_ill_on">Accendi luci</string>
+    <string name="cmad_toggle_ill_off">Spegni luci</string>
+    <string name="cmad_toggle_red_on">Accendi MADRED</string>
+    <string name="cmad_toggle_red_off">Spegni MADRED</string>
+    <string name="login_success">Login effettuato</string>
+    <string name="incorrect_credential">Credenziali non corrette</string>
+    <string name="ill_all_on">Accensione di tutte le luci: comando inviato al server</string>
+    <string name="ill_all_off">Spegnimento di tutte le luci: comando inviato al server</string>
+    <string name="ill_single_on">Accensione singola luce: comando inviato al server</string>
+    <string name="ill_single_off">Spegnimento singola luce: comando inviato al server</string>
+    <string name="red_all_on">Accensione di tutti i MADRED: comando inviato al server</string>
+    <string name="red_all_off">Spegnimento di tutti i MADRED: comando inviato al server</string>
+    <string name="red_single_on">Accensione singolo MADRED: comando inviato al server</string>
+    <string name="red_single_off">Spegnimento singolo MADRED: comando inviato al server</string>
+    <string name="command_without_login">Non è possibile inviare comandi senza effettuare il login</string>
+    <string name="command_error">Errore durante l\'invio del comando</string>
+    <string name="copied_to_clipboard">Copiato negli appunti</string>
+    <string name="no_internet_connection">Nessuna connessione a Internet disponibile</string>
 </resources>

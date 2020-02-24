@@ -2,6 +2,7 @@ package com.example.traininfo;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -279,6 +280,11 @@ public class Parser {
         Log.d("TAG", xmlString);
 
         Document doc = getDomElement();
+
+        //fix NullPointerException che talvolta si generava cercando un treno anche esistente
+        if(doc==null) {
+            return detail;
+        }
 
         NodeList nl = doc.getElementsByTagName("TrainHeader");
         Element e = (Element) nl.item(0);

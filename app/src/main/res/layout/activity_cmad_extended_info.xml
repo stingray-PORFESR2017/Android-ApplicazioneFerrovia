@@ -9,18 +9,57 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F8F3E8"
         tools:context=".CmadExtendedInfoActivity">
+
+        <Button
+            android:id="@+id/buttonRedOn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/cmad_toggle_red_on"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/fattorePotenzaL3"
+            app:layout_constraintTop_toBottomOf="@+id/fattorePotenzaL3" />
+
+        <Button
+            android:id="@+id/buttonRedOff"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/cmad_toggle_red_off"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/buttonRedOn"
+            app:layout_constraintStart_toStartOf="@+id/buttonRedOn"
+            app:layout_constraintTop_toBottomOf="@+id/buttonRedOn" />
+
+        <Button
+            android:id="@+id/buttonLuciOn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/cmad_toggle_ill_on"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/fattorePotenzaL1"
+            app:layout_constraintTop_toBottomOf="@+id/fattorePotenzaL1" />
+
+        <Button
+            android:id="@+id/buttonLuciOff"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/cmad_toggle_ill_off"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/buttonLuciOn"
+            app:layout_constraintStart_toStartOf="@+id/buttonLuciOn"
+            app:layout_constraintTop_toBottomOf="@+id/buttonLuciOn" />
 
         <TextView
             android:id="@+id/fattorePotenzaL3"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-
             android:layout_marginStart="8dp"
+
             android:layout_marginTop="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
+            android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
             android:textAlignment="center"
@@ -34,10 +73,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:gravity="center"
-
             android:layout_marginEnd="8dp"
-            android:background="#E4DEF8D8"
+
+            android:background="@color/background_item_cmad_info"
+            android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
             android:textAlignment="center"
@@ -52,7 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:drawableRight="@drawable/reactiveenergy"
             android:gravity="center"
 
@@ -82,7 +121,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
             android:autoText="true"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
@@ -100,7 +139,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:gravity="center|clip_vertical|center_horizontal"
             android:padding="4dp"
             android:text="TextView"
@@ -120,7 +159,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
 
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:drawableRight="@drawable/temperature"
             android:gravity="center"
             android:padding="4dp"
@@ -138,7 +177,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
 
             android:drawableRight="@drawable/lampcurrent"
             android:gravity="center"
@@ -155,7 +194,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
 
             android:drawableRight="@drawable/tension"
             android:gravity="center"
@@ -174,7 +213,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
 
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:drawableRight="@drawable/tension"
             android:gravity="center"
             android:padding="4dp"
@@ -191,7 +230,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
 
             android:drawableRight="@drawable/tension"
             android:gravity="center"
@@ -208,7 +247,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:drawableRight="@drawable/soiltemperature"
             android:gravity="center"
 
@@ -226,7 +265,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:drawableRight="@drawable/activeenergy"
 
             android:gravity="center"
@@ -259,14 +298,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
 
             android:drawableRight="@drawable/current"
             android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
             android:textAlignment="center"
-            android:textSize="10dp"
+            android:textSize="10sp"
             app:layout_constraintEnd_toStartOf="@+id/correnteL2"
             app:layout_constraintTop_toBottomOf="@+id/tensioneL1" />
 
@@ -277,7 +316,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
 
             android:drawableRight="@drawable/current"
             android:gravity="center"
@@ -296,7 +335,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
 
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:drawableRight="@drawable/current"
             android:gravity="center"
             android:padding="4dp"
@@ -311,10 +350,10 @@
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:gravity="center"
-
             android:layout_marginEnd="8dp"
-            android:background="#E4DEF8D8"
+
+            android:background="@color/background_item_cmad_info"
+            android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
             android:textAlignment="center"
@@ -330,7 +369,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
 
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
@@ -347,7 +386,7 @@
             android:layout_marginStart="8dp"
 
             android:layout_marginTop="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
@@ -360,11 +399,11 @@
             android:id="@+id/potenzaReattivaL1"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-
             android:layout_marginTop="8dp"
+
             android:layout_marginEnd="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
+            android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
             android:textAlignment="center"
@@ -378,10 +417,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:gravity="center"
-
             android:layout_marginEnd="8dp"
-            android:background="#E4DEF8D8"
+
+            android:background="@color/background_item_cmad_info"
+            android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
             android:textAlignment="center"
@@ -397,7 +436,7 @@
             android:layout_marginStart="8dp"
 
             android:layout_marginTop="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
@@ -411,11 +450,11 @@
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:gravity="center"
-
             android:layout_marginTop="8dp"
+
             android:layout_marginEnd="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
+            android:gravity="center"
             android:padding="4dp"
             android:text="TextView"
             android:textAlignment="center"
@@ -431,9 +470,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
-            android:background="#E4DEF8D8"
-            android:padding="4dp"
+            android:background="@color/background_item_cmad_info"
             android:gravity="center"
+            android:padding="4dp"
 
             android:text="TextView"
             android:textAlignment="center"
@@ -448,7 +487,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:background="#E4DEF8D8"
+            android:background="@color/background_item_cmad_info"
             android:gravity="center"
 
             android:padding="4dp"
@@ -462,10 +501,11 @@
             android:id="@+id/recycler_view_cmadExtendedInfo"
             android:layout_width="match_parent"
             android:layout_height="424dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="115dp"
             android:focusable="false"
-            app:layout_constraintTop_toBottomOf="@+id/fattorePotenzaL2"
-            tools:layout_editor_absoluteX="0dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fattorePotenzaL2" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

@@ -41,4 +41,4 @@ Wiki          |
 
 
 ## NOTE
-Consulta il [wiki](https://github.com/stingray-PORFESR2017/Android-ApplicazioneFerrovia/wiki "wiki") 
+Consulta il [wiki](https://github.com/stingray-PORFESR2017/Android-ApplicazioneFerrovia/wiki "wiki")

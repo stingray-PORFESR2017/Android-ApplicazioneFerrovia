@@ -8,10 +8,8 @@ import java.util.ArrayList;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Display;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +38,8 @@ public class MadillExtendedInfoActivity extends AppCompatActivity {
     private TextView mCrc;
     private ArrayList<String> s=new ArrayList<>();
     private ArrayList<TextView> t=new ArrayList<>();
+    private String macEnte;
+    private String macCMAD;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +47,10 @@ public class MadillExtendedInfoActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Madill ml=intent.getParcelableExtra("madill");
+
+        //per la gestione dei comandi
+        macEnte=ml.getMadillMacAdr();
+        macCMAD=intent.getStringExtra("cmad_addr");
 
         s=new ArrayList<>();
         s.add(ml.getMadillMacAdr());
@@ -125,7 +129,6 @@ public class MadillExtendedInfoActivity extends AppCompatActivity {
         String i=intent.getStringExtra("number");
         setTitle("Info Madill "+i);
 
-
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
@@ -148,7 +151,7 @@ public class MadillExtendedInfoActivity extends AppCompatActivity {
                     ClipboardManager clipboard = (ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
                     ClipData clip = ClipData.newPlainText("text", this.textToCopy);
                     clipboard.setPrimaryClip(clip);
-                    Toast.makeText(getApplicationContext(), "Copiato negli appunti",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.copied_to_clipboard,Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -161,14 +164,33 @@ public class MadillExtendedInfoActivity extends AppCompatActivity {
         params.width = screenWidthDp;
         v.setLayoutParams(params);
     }
+
+
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish();
-                break;
-        }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_option_ill_red, menu);
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case android.R.id.home:
+                this.finish();
+                return true;
+
+            case R.id.btn_on:
+                new AsyncTaskCommander(this, Command.ON, entityType.LUCE, macCMAD, macEnte).execute();
+                return true;
+
+            case R.id.btn_off:
+                new AsyncTaskCommander(this, Command.OFF, entityType.LUCE, macCMAD, macEnte).execute();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
 }

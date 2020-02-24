@@ -14,6 +14,7 @@ import android.view.Display;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,6 +53,11 @@ public class CmadExtendedInfoActivity extends AppCompatActivity implements CmadE
     private TextView mCrc;
     private ArrayList<String> s=new ArrayList<>();
     private ArrayList<TextView> t=new ArrayList<>();
+
+    private Button buttonLuciOn;
+    private Button buttonLuciOff;
+    private Button buttonRedOn;
+    private Button buttonRedOff;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,6 +119,41 @@ public class CmadExtendedInfoActivity extends AppCompatActivity implements CmadE
         mEnergiaReattiva = findViewById(R.id.energiaReattiva);
         //         mRawBase64 =findViewById(R.id.cmadRaw);
         //         mCrc =findViewById(R.id.cmadCrc);
+
+
+        //gestione bottoni comandi
+        buttonRedOn= findViewById(R.id.buttonRedOn);
+        buttonRedOff = findViewById(R.id.buttonRedOff);
+        buttonLuciOn= findViewById(R.id.buttonLuciOn);
+        buttonLuciOff= findViewById(R.id.buttonLuciOff);
+
+        buttonLuciOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AsyncTaskCommander(getApplicationContext(), Command.ON, entityType.LUCE, ml.getEntity(), null).execute();            }
+        });
+
+        buttonLuciOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AsyncTaskCommander(getApplicationContext(), Command.OFF, entityType.LUCE, ml.getEntity(), null).execute();            }
+        });
+
+        buttonRedOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AsyncTaskCommander(getApplicationContext(), Command.ON, entityType.SCALDINA, ml.getEntity(), null).execute();
+            }
+        });
+
+        buttonRedOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AsyncTaskCommander(getApplicationContext(), Command.OFF, entityType.SCALDINA, ml.getEntity(), null).execute();
+            }
+        });
+
+
 
         mCmadRevision.setText("CMAD_REVISION\n   " + ml.getCmadRevision());
         mCmadPosition.setText("CMAD_POSITION\n " + ml.getCmadPosition());
@@ -197,7 +238,7 @@ public class CmadExtendedInfoActivity extends AppCompatActivity implements CmadE
                     ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
                     ClipData clip = ClipData.newPlainText("text", this.textToCopy);
                     clipboard.setPrimaryClip(clip);
-                    Toast.makeText(getApplicationContext(), "Copiato negli appunti",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.copied_to_clipboard,Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -225,12 +266,14 @@ public class CmadExtendedInfoActivity extends AppCompatActivity implements CmadE
             intent = new Intent(this, MadredExtendedInfoActivity.class);
             intent.putExtra("madred",madredList.get(position));
             intent.putExtra("number",Integer.toString(position+1));
+            intent.putExtra("cmad_addr", ml.getEntity());
             startActivity(intent);
         }
         else{
             intent = new Intent(this, MadillExtendedInfoActivity.class);
             intent.putExtra("madill",madillList.get(position-madredList.size()));
             intent.putExtra("number",Integer.toString(1+position-madredList.size()));
+            intent.putExtra("cmad_addr", ml.getEntity());
             startActivity(intent);
         }
 

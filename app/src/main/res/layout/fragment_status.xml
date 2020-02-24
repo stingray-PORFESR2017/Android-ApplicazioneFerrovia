@@ -85,29 +85,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/status_search" />
 
-    <TextView
-        android:id="@+id/footer_about"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="396dp"
-        android:layout_marginEnd="8dp"
-        android:padding="4dp"
-        android:text="@string/stingray_string"
-        android:textSize="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="363dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/footer_about"
-        app:srcCompat="@drawable/footer" />
-
 </android.support.constraint.ConstraintLayout>

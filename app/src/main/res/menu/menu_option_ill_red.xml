@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- "Mark Favorite", should appear as action button if possible -->
+    <item
+        android:id="@+id/btn_on"
+        android:checkable="true"
+        android:enabled="true"
+        android:title="ON"
+        android:visible="true"
+        app:showAsAction="always|withText" />
+
+    <item
+        android:id="@+id/btn_off"
+        android:checkable="false"
+        android:checked="false"
+        android:enabled="true"
+        android:title="OFF"
+        android:visible="true"
+        app:showAsAction="always|withText" />
+
+</menu>

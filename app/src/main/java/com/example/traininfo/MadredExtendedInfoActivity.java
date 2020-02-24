@@ -9,6 +9,7 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,8 @@ public class MadredExtendedInfoActivity extends AppCompatActivity {
     private TextView[] mMadredValoreCorrenteCavo=new TextView[12];
     private ArrayList<String> s=new ArrayList<>();
     private ArrayList<TextView> t=new ArrayList<>();
-
+    private String macEnte;
+    private String macCMAD;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +44,10 @@ public class MadredExtendedInfoActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Madred m=intent.getParcelableExtra("madred");
+
+    //per la gestione dei comandi
+        macEnte=m.getMadredMacAdr();
+        macCMAD=intent.getStringExtra("cmad_addr");
 
         s=new ArrayList<>();
         s.add(m.getMadredDate());
@@ -168,7 +174,7 @@ public class MadredExtendedInfoActivity extends AppCompatActivity {
                     ClipboardManager clipboard = (ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
                     ClipData clip = ClipData.newPlainText("text", this.textToCopy);
                     clipboard.setPrimaryClip(clip);
-                    Toast.makeText(getApplicationContext(), "Copiato negli appunti",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.copied_to_clipboard,Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -182,14 +188,33 @@ public class MadredExtendedInfoActivity extends AppCompatActivity {
         v.setLayoutParams(params);
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_option_ill_red, menu);
+        return true;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+
             case android.R.id.home:
                 this.finish();
-                break;
+                return true;
+
+            case R.id.btn_on:
+                new AsyncTaskCommander(this, Command.ON, entityType.SCALDINA, macCMAD, macEnte).execute();
+                return true;
+
+            case R.id.btn_off:
+                new AsyncTaskCommander(this, Command.OFF, entityType.SCALDINA, macCMAD, macEnte).execute();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+
         }
-        return true;
     }
 
 }

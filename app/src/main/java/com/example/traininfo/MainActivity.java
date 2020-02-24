@@ -27,6 +27,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.ResourceBundle;
 
 public class MainActivity extends AppCompatActivity implements AsyncResponse {
 
@@ -72,7 +73,8 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
         tabLayout.addTab(tabLayout.newTab().setText(R.string.arrivals_tab));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.status_tab));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.info_tab));
-        tabLayout.addTab(tabLayout.newTab().setText("About"));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.login_tab));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.about_tab));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
@@ -100,6 +102,8 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
+        //inizializzazione del login manager
+        new LoginManager(getApplicationContext());
         getLocation();
     }
 
@@ -136,8 +140,13 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
     public void searchInfo(View view) {
         EditText info = findViewById(R.id.info_text);
         String tNumber = info.getText().toString();
-        Integer numTrain = Integer.parseInt(tNumber);
-
+        Integer numTrain;
+        try {
+            numTrain = Integer.parseInt(tNumber);
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, R.string.info_train_name_not_valid,Toast.LENGTH_SHORT).show();
+            return;
+        }
         AsyncTaskTrain aTask = new AsyncTaskTrain(this);
 
         aTask.delegate = this;
@@ -151,6 +160,13 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
 
     @Override
     public void processFinish(LinkedList<String> output, int t) {
+        //fix per ricerca treno 11879, esistente (visibile dall'app stessa) ma che fa crashare l'app
+        if(output.isEmpty()) {
+            Toast.makeText(this,
+                    R.string.error_loading_train_information,
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
         if (t == 0) {
             mPlace.clear();
             Log.d("TAG", "processFinish");
@@ -225,7 +241,6 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
     }
 
 
-
     public void getLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -251,4 +266,5 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
                     });
         }
     }
+
 }

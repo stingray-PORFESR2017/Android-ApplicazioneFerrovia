@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorPrimary">#008577</color> colore originale -->
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="ic_launcher_background">#00866C</color>
+    <color name="background_item_cmad_info">#141414</color>
+    <color name="background_item_red_info">#141414</color>
+    <color name="background_item_ill_info">#141414</color>
+    <color name="background_cmad_ill_red">#CD121212</color>
+    <color name="background_loghi">#FAFAFA</color>
+</resources>
