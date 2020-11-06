@@ -391,7 +391,7 @@ public class Parser {
             String DATE=  getValue(e_id, "DATE");
             ZonedDateTime z= ZonedDateTime.parse(DATE);
          //   DATE=z.getDayOfMonth()+"-"+z.getDayOfMonth()+"-"+z.getYear()+" "+z.getHour()+":"+z.getMinute()+":"+z.getSecond();
-            DATE=z.toLocalDate()+" "+z.toLocalTime();
+          //  DATE=z.toLocalDate()+" "+z.toLocalTime();
             String CMAD_HEADER=  getValue(e, "CMAD_HEADER");
             String CMAD_TYPE=  getValue(e, "CMAD_TYPE");
             String CMAD_REVISION=  getValue(e, "CMAD_REVISION");
@@ -434,7 +434,7 @@ public class Parser {
                 String m=getValue(e_datiMadred_id,"MAC_ADR");
                 String d=getValue(e_datiMadred_id,"DATE");
                 ZonedDateTime zdt= ZonedDateTime.parse(d);
-                d=zdt.toLocalDate()+" "+z.toLocalTime();
+               // d=zdt.toLocalDate()+" "+z.toLocalTime();
                 String h=getValue(e_datiMadred,"HEADER");
                 String t=getValue(e_datiMadred,"TYPE");
                 String r=getValue(e_datiMadred,"REVISION");
@@ -468,7 +468,7 @@ public class Parser {
                 String m=getValue(e_datiMadill_id,"MAC_ADR");
                 String d=getValue(e_datiMadill_id,"DATE");
                 ZonedDateTime zdt= ZonedDateTime.parse(d);
-                d=zdt.toLocalDate()+" "+z.toLocalTime();
+               // d=zdt.toLocalDate()+" "+z.toLocalTime();
                 String h=getValue(e_datiMadill,"HEADER");
                 String t=getValue(e_datiMadill,"TYPE");
                 String r=getValue(e_datiMadill,"REVISION");

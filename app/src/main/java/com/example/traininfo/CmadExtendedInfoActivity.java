@@ -4,12 +4,18 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Display;
 import android.view.MenuItem;
 import android.view.View;
@@ -242,7 +248,103 @@ public class CmadExtendedInfoActivity extends AppCompatActivity implements CmadE
                 }
             });
         }
+
+
+        long time=1000;
+
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+
+                            AsyncTaskTrain aTask = new AsyncTaskTrain(getApplicationContext(),ml.getMACADR());
+                            aTask.delegate = new AsyncResponse() {
+                                @Override
+                                public void processFinish(ArrayList<DATrain> output) {
+
+                                }
+
+                                @Override
+                                public void processFinish(LinkedList<String> output, int t) {
+
+                                }
+
+                                @Override
+                                public void processFinish(ArrayList<Cmad> output, int t) {
+                                    ml = output.get(0);
+
+
+                                    s.add(ml.getCmadRevision());
+                                    s.add(ml.getCmadPosition());
+                                    s.add(ml.getCmadDescription());
+                                    s.add(ml.getCmadDigitalInfo());
+                                    s.add(ml.getTempEst());
+                                    s.add(ml.getLux());
+                                    s.add(ml.getTensioneL1());
+                                    s.add(ml.getTensioneL2());
+                                    s.add(ml.getTensioneL3());
+                                    s.add(ml.getCorrenteL1());
+                                    s.add(ml.getCorrenteL2());
+                                    s.add(ml.getCorrenteL3());
+                                    s.add(ml.getPotenzaAttivaL1());
+                                    s.add(ml.getPotenzaAttivaL2());
+                                    s.add(ml.getPotenzaAttivaL3());
+                                    s.add(ml.getPotenzaReattivaL1());
+                                    s.add(ml.getPotenzaReattivaL2());
+                                    s.add(ml.getPotenzaReattivaL3());
+                                    s.add(ml.getFattorePotenzaL1());
+                                    s.add(ml.getFattorePotenzaL2());
+                                    s.add(ml.getFattorePotenzaL3());
+                                    s.add(ml.getTempSuolo());
+                                    s.add(ml.getEnergiaAttiva());
+                                    s.add(ml.getEnergiaReattiva());
+
+                                    mCmadRevision.setText("CMAD_REVISION\n   " + ml.getCmadRevision());
+                                    mCmadPosition.setText("CMAD_POSITION\n " + ml.getCmadPosition());
+                                    mCmadDescription.setText("CMAD_DESCRIPTION\n " + ml.getCmadDescription());
+                                    mCmadDigitalInfo.setText("CMAD_DIGITAL_INFO\n " + ml.getCmadDigitalInfo());
+                                    mTempEst.setText("TempEst\n " + ml.getTempEst());
+                                    mLux.setText("Lux\n " + ml.getLux());
+                                    mTempSuolo.setText("TempSuolo\n " + ml.getTempSuolo());
+                                    mTensioneL1.setText("Tensione L1\n " + ml.getTensioneL1());
+                                    mTensioneL2.setText("Tensione L2\n " + ml.getTensioneL2());
+                                    mTensioneL3.setText("Tensione L3\n " + ml.getTensioneL3());
+                                    mCorrenteL1.setText("Corrente L1\n " + ml.getCorrenteL1());
+                                    mCorrenteL2.setText("Corrente L2\n " + ml.getCorrenteL2());
+                                    mCorrenteL3.setText("Corrente L3\n " + ml.getCorrenteL3());
+                                    mPotenzaAttivaL1.setText("Potenza Attiva L1\n " + ml.getPotenzaAttivaL1());
+                                    mPotenzaAttivaL2.setText("Potenza Attiva L2\n " + ml.getPotenzaAttivaL2());
+                                    mPotenzaAttivaL3.setText("Potenza Attiva L3\n " + ml.getPotenzaAttivaL3());
+                                    mPotenzaReattivaL1.setText("Potenza Reattiva L1\n " + ml.getPotenzaReattivaL1());
+                                    mPotenzaReattivaL2.setText("Potenza Reattiva L2\n " + ml.getPotenzaReattivaL2());
+                                    mPotenzaReattivaL3.setText("Potenza Reattiva L3\n " + ml.getPotenzaReattivaL3());
+                                    mFattorePotenzaL1.setText("Fattore Potenza L1\n " + ml.getFattorePotenzaL1());
+                                    mFattorePotenzaL2.setText("Fattore Potenza L2\n " + ml.getFattorePotenzaL2());
+                                    mFattorePotenzaL3.setText("Fattore Potenza L3\n " + ml.getFattorePotenzaL3());
+                                    mEnergiaAttiva.setText("Energia Attiva\n " + ml.getEnergiaAttiva());
+                                    mEnergiaReattiva.setText("Energia Reattiva\n " + ml.getEnergiaReattiva());
+
+                                    sAdapter.update(ml.getMadred(),ml.getMadill());
+
+                                            Log.d(output.get(0).toString(), "entity");
+
+                                }
+                            };
+
+                            aTask.execute(6);
+
+
+
+                    }
+                });
+            }
+        },10000,10000);
     }
+
+
     public void setViewSize(View v,int screenHeightDp,int screenWidthDp){
         ViewGroup.LayoutParams params = v.getLayoutParams();
         //    params.height = screenHeightDp;
@@ -278,5 +380,8 @@ public class CmadExtendedInfoActivity extends AppCompatActivity implements CmadE
         }
 
     }
+
+
+
 
 }

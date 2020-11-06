@@ -85,6 +85,14 @@ public class CmadExtendedInfoListAdapter extends RecyclerView.Adapter<CmadExtend
         this.mOnCmadExtendedInfoListener=mOnCmadExtendedInfoListener;
     }
 
+    public void update(ArrayList<Madred> mr, ArrayList<Madill> ml){
+        madillList.clear();
+        madillList.addAll(ml);
+        madredList.clear();
+        madredList.addAll(mr);
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public CmadExtendedInfoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {

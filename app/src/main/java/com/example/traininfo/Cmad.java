@@ -265,6 +265,8 @@ public class Cmad implements Parcelable {
 
     public String getRawBase() { return rawbase64; }
 
+    public String getMACADR() { return entity;}
+
     public String getCrc() { return crc; }
 
 }

@@ -100,6 +100,11 @@ public class CmadListAdapter extends RecyclerView.Adapter<CmadListAdapter.Status
         this.mCmadList = cmadList;
         this.mOnStatusListener=onStatusListener;
     }
+    public void update(ArrayList<Cmad> cmadList){
+        mCmadList.clear();
+        mCmadList.addAll(cmadList);
+        notifyDataSetChanged();
+    }
 
     @NonNull
     @Override
