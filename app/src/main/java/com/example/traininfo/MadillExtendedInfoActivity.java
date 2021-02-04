@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ public class MadillExtendedInfoActivity extends AppCompatActivity {
     private ArrayList<TextView> t=new ArrayList<>();
     private String macEnte;
     private String macCMAD;
+    private SeekBar simpleSeekBar;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +53,7 @@ public class MadillExtendedInfoActivity extends AppCompatActivity {
         //per la gestione dei comandi
         macEnte=ml.getMadillMacAdr();
         macCMAD=intent.getStringExtra("cmad_addr");
-
+        simpleSeekBar = findViewById(R.id.seekBar);
         s=new ArrayList<>();
         s.add(ml.getMadillMacAdr());
         s.add(ml.getMadillDate());
@@ -174,6 +176,7 @@ public class MadillExtendedInfoActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        int progress = simpleSeekBar.getProgress();
         switch (item.getItemId()) {
 
             case android.R.id.home:
@@ -181,11 +184,11 @@ public class MadillExtendedInfoActivity extends AppCompatActivity {
                 return true;
 
             case R.id.btn_on:
-                new AsyncTaskCommander(this, Command.ON, entityType.LUCE, macCMAD, macEnte).execute();
+                new AsyncTaskCommander(this, Command.ON, entityType.LUCE, macCMAD, macEnte, progress).execute();
                 return true;
 
             case R.id.btn_off:
-                new AsyncTaskCommander(this, Command.OFF, entityType.LUCE, macCMAD, macEnte).execute();
+                new AsyncTaskCommander(this, Command.OFF, entityType.LUCE, macCMAD, macEnte, 0).execute();
                 return true;
 
             default:

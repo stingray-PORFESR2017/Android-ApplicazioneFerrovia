@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.util.*;
@@ -28,6 +29,7 @@ public class CmadExtendedInfoListAdapter extends RecyclerView.Adapter<CmadExtend
         private ImageView mMadredImg;
 
 
+
         public CmadExtendedInfoViewHolder(@NonNull View itemView, OnCmadExtendedInfoListener onCmadExtendedInfoListener) {
             super(itemView);
             this.onCmadExtendedInfoListener=onCmadExtendedInfoListener;
@@ -36,6 +38,8 @@ public class CmadExtendedInfoListAdapter extends RecyclerView.Adapter<CmadExtend
             mMadredMacAdr= itemView.findViewById(R.id.madredMacAdr);
             mMadredDate= itemView.findViewById(R.id.madredDate);
             mMadredImg=itemView.findViewById(R.id.madredImg);
+
+           
 
         }
 

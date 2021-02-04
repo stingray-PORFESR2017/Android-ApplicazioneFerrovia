@@ -32,8 +32,19 @@ class AsyncTaskCommander extends AsyncTask<Void, Void, Boolean> {
     private String ente_addr;
     private entityType type;
     private Command command;
+    private int dimmer = 0;
 
     private final String success_response="OK";
+
+    public AsyncTaskCommander(Context c, Command command, entityType type, String cmad_addr, String ente_addr, int di) {
+        super();
+        this.cmad_addr=cmad_addr;
+        this.ente_addr=ente_addr;
+        this.command=command;
+        this.type=type;
+        this.context= c;
+        this.dimmer = di;
+    }
 
     public AsyncTaskCommander(Context c, Command command, entityType type, String cmad_addr, String ente_addr) {
         super();
@@ -42,7 +53,7 @@ class AsyncTaskCommander extends AsyncTask<Void, Void, Boolean> {
         this.command=command;
         this.type=type;
         this.context= c;
-
+       
     }
 
     @Override
@@ -81,6 +92,7 @@ class AsyncTaskCommander extends AsyncTask<Void, Void, Boolean> {
             @Override
             public byte[] getBody() {
                 String secureId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+
                 String postData = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                         "<JCMADCommand>\n" +
                             "\t"+getCommand_xml()+"\n" +
@@ -180,10 +192,14 @@ class AsyncTaskCommander extends AsyncTask<Void, Void, Boolean> {
     }
 
     private String getCommand_xml() {
+        String dim = "";
+        if(dimmer>5){
+            dim = "<Dimmer>"+dimmer+"</Dimmer>";
+        }
         switch (type) {
             case LUCE:
                 switch (command) {
-                    case ON: return "<command commandill=\"ON\"></command>";
+                    case ON: return "<command commandill=\"ON\">"+dim+"</command>";
                     case OFF:return "<command commandill=\"OFF\"></command>";
                 }
             case SCALDINA:
