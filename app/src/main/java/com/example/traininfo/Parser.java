@@ -355,7 +355,7 @@ public class Parser {
         ArrayList<Cmad> entity = new ArrayList<>();
         String url;
         if(macAddr.equals("All"))
-            url = "https://stingray.isti.cnr.it:8443/serviziosupervisionestazione/CMAD/ALL/";
+            url = "https://stingray.isti.cnr.it:8443/serviziosupervisionestazione/CMAD/ALL_LAST/";
         else
             url = "https://stingray.isti.cnr.it:8443/serviziosupervisionestazione/CMAD/MAC_ADR_ALL/"+macAddr;
       //  String url = "https://stingray.isti.cnr.it:8443/serviziosupervisionestazione/CMAD/MAC_ADR_ALL/fffe00000007";

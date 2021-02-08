@@ -94,6 +94,25 @@ public class CmadExtendedInfoListAdapter extends RecyclerView.Adapter<CmadExtend
         madillList.addAll(ml);
         madredList.clear();
         madredList.addAll(mr);
+        int i=1;
+        map.clear();
+        for(Madred m:mr){
+            String[] ar=new String[3];
+            ar[0]="MADRED "+i+" ADR: "+m.getMadredMacAdr();
+            ar[1]="DATE: "+m.getMadredDate();
+            ar[2]="madred";
+            map.add(ar);
+            i++;
+        }
+        i=1;
+        for(Madill m:ml){
+            String[] ar=new String[3];
+            ar[0]="MADILL "+i+" ADR: "+m.getMadillMacAdr();
+            ar[1]="DATE: "+m.getMadillDate();
+            ar[2]="madill";
+            map.add(ar);
+            i++;
+        }
         notifyDataSetChanged();
     }
 
