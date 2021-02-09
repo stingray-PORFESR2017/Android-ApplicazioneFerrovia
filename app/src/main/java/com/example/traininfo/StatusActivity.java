@@ -10,6 +10,8 @@ import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class StatusActivity extends AppCompatActivity implements AsyncResponse, CmadListAdapter.OnStatusListener {
 
@@ -35,6 +37,43 @@ public class StatusActivity extends AppCompatActivity implements AsyncResponse, 
         aTask.delegate = this;
 
         aTask.execute(6);
+
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        AsyncTaskTrain aTask = new AsyncTaskTrain(getApplicationContext(),"All");
+                        aTask.delegate = new AsyncResponse() {
+                            @Override
+                            public void processFinish(ArrayList<DATrain> output) {
+
+                            }
+
+                            @Override
+                            public void processFinish(LinkedList<String> output, int t) {
+
+                            }
+
+                            @Override
+                            public void processFinish(ArrayList<Cmad> output, int t) {
+                                sAdapter.update(output);
+
+                            }
+                        };
+
+                        aTask.execute(6);
+
+
+
+
+
+                }
+            });
+        }
+     },10000,10000);
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
