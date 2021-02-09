@@ -4,10 +4,14 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,6 +46,7 @@ public class MadillExtendedInfoActivity extends AppCompatActivity {
     private String macEnte;
     private String macCMAD;
     private SeekBar simpleSeekBar;
+    private int position;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +54,7 @@ public class MadillExtendedInfoActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Madill ml=intent.getParcelableExtra("madill");
-
+        position = Integer.parseInt(intent.getStringExtra("number"));
         //per la gestione dei comandi
         macEnte=ml.getMadillMacAdr();
         macCMAD=intent.getStringExtra("cmad_addr");
@@ -158,7 +163,74 @@ public class MadillExtendedInfoActivity extends AppCompatActivity {
             });
         }
 
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+
+                        AsyncTaskTrain aTask = new AsyncTaskTrain(getApplicationContext(),macCMAD);
+                        aTask.delegate = new AsyncResponse() {
+                            @Override
+                            public void processFinish(ArrayList<DATrain> output) {
+
+                            }
+
+                            @Override
+                            public void processFinish(LinkedList<String> output, int t) {
+
+                            }
+
+                            @Override
+                            public void processFinish(ArrayList<Cmad> output, int t) {
+                                if(!output.isEmpty()) {
+                                    Cmad ml = output.get(0);
+                                    ArrayList<Madill> madill = ml.getMadill();
+                                    if (!madill.isEmpty()) {
+                                        Madill nred = madill.get(position - 1);
+                                        update(nred);
+                                    }
+                                }
+                                Log.d(output.get(0).toString(), "entity");
+
+                            }
+                        };
+
+                        aTask.execute(6);
+
+
+
+                    }
+
+
+                });
+            }
+        },10000,10000);
+
     }
+
+    private void update(Madill ml) {
+
+        mMadillMacAdr.setText("Madill MAC_ADR\n "+ml.getMadillMacAdr());
+        mMadillDate.setText("Madill DATE\n "+ml.getMadillDate());
+        mMadillHeader.setText("Madill HEADER\n "+ml.getMadillHeader());
+        mMadillType.setText("Madill TYPE\n "+ml.getMadillType());
+        mMadillRevision.setText("Madill REVISION\n "+ml.getMadillRevision());
+        mMadillPosition.setText("Madill POSITION\n "+ml.getMadillPosition());
+        mMadillDescription.setText("Madill DESCRPTION\n "+ml.getMadillDescription());
+        mMadillLongitude.setText("Madill LONGITUDE\n "+ml.getMadillLongitude());
+        mMadillLatitude.setText("Madill LATITUDE\n "+ml.getMadillLatitude());
+        mMadillDigitalInfo.setText("Madill DIGITAL_INFO\n "+ml.getMadillDigitalInfo());
+        mMadillPotenzaLampada.setText("PotenzaLampada\n "+ml.getMadillPotenzaLampada());
+        mMadillComandoLampada.setText("ComandoLampada\n "+ml.getMadillComandoLampada());
+        mMadillTensioneLampada.setText("TensioneLampada\n "+ml.getMadillTensioneLampada());
+        mMadillVitaLampada.setText("VitaLampada\n "+ml.getMadillVitaLampada());
+        mMadillCorrenteLampada.setText("CorrenteLampada\n "+ml.getMadillCorrenteLampada());
+        mMadillScorta.setText("Madill Scorta\n "+ml.getMadillScorta());
+    }
+
     public void setViewSize(View v, int screenHeightDp, int screenWidthDp){
 
         ViewGroup.LayoutParams params = v.getLayoutParams();

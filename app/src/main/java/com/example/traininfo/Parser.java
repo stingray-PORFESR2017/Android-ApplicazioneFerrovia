@@ -85,7 +85,7 @@ public class Parser {
         } catch (SAXException e) {
             e.printStackTrace();
             return null;
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }

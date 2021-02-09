@@ -4,10 +4,14 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,6 +41,7 @@ public class MadredExtendedInfoActivity extends AppCompatActivity {
     private ArrayList<TextView> t=new ArrayList<>();
     private String macEnte;
     private String macCMAD;
+    private int position;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +49,7 @@ public class MadredExtendedInfoActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Madred m=intent.getParcelableExtra("madred");
-
+        position = Integer.parseInt(intent.getStringExtra("number"));
     //per la gestione dei comandi
         macEnte=m.getMadredMacAdr();
         macCMAD=intent.getStringExtra("cmad_addr");
@@ -179,6 +184,125 @@ public class MadredExtendedInfoActivity extends AppCompatActivity {
             });
         }
 
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+
+                        AsyncTaskTrain aTask = new AsyncTaskTrain(getApplicationContext(),macCMAD);
+                        aTask.delegate = new AsyncResponse() {
+                            @Override
+                            public void processFinish(ArrayList<DATrain> output) {
+
+                            }
+
+                            @Override
+                            public void processFinish(LinkedList<String> output, int t) {
+
+                            }
+
+                            @Override
+                            public void processFinish(ArrayList<Cmad> output, int t) {
+                                if(!output.isEmpty()) {
+                                    Cmad ml = output.get(0);
+                                    ArrayList<Madred> madred = ml.getMadred();
+                                    if (!madred.isEmpty()) {
+                                        Madred red = madred.get(position - 1);
+                                        update(red);
+                                    }
+                                }
+                                Log.d(output.get(0).toString(), "entity");
+
+                            }
+                        };
+
+                        aTask.execute(6);
+
+
+
+                    }
+                });
+            }
+        },10000,10000);
+
+
+
+    }
+
+    public void update(Madred m){
+        mMadredMacAdr.setText("Madred MAC_ADR\n  "+m.getMadredMacAdr());
+        mMadredDate.setText("Madred DATE\n  "+m.getMadredDate());
+        mMadredHeader.setText("Madred HEADER\n  "+m.getMadredHeader());
+        mMadredType.setText("Madred TYPE\n  "+m.getMadredType());
+        mMadredRevision.setText("Madred REVISION\n  "+m.getMadredRevision());
+        mMadredPosition.setText("Madred POSITION\n  "+m.getMadredPosition());
+        mMadredDescription.setText("Madred DESCRIPTION\n  "+m.getMadredDescription());
+        mMadredLongitude.setText("Madred LONGITUDE\n  "+m.getMadredLongitude());
+        mMadredLatitude.setText("Madred LATITUDE\n  "+m.getMadredLatitude());
+        mMadredDigitalInfo.setText("DIGITAL_INFO\n  "+m.getMadredDigitalInfo());
+        mMadredWireDigitalInfo.setText("WIRE_DIGITAL_INFO\n  "+m.getMadredWireDigitalInfo());
+    /*    mRawBase64.setText("Madred RAWBASE64: "+m.getMadredRawBase());
+        mCrc.setText("Madred CRC: "+m.getMadredCrc());*/
+        //macEnte=m.getMadredMacAdr();
+        //macCMAD=m.getMadredMacAdr();
+
+        s=new ArrayList<>();
+        s.add(m.getMadredDate());
+        s.add(m.getMadredMacAdr());
+        s.add(m.getMadredHeader());
+        s.add(m.getMadredType());
+        s.add(m.getMadredRevision());
+        s.add(m.getMadredPosition());
+        s.add(m.getMadredDescription());
+        s.add(m.getMadredLongitude());
+        s.add(m.getMadredLatitude());
+        s.add(m.getMadredDigitalInfo());
+        s.add(m.getMadredWireDigitalInfo());
+        s.add(m.getMadredWireDigitalInfo());
+        ArrayList<String> temperatura=m.getMadredTemperatura();
+        for(int i=1;i<3;i++){
+            s.add(temperatura.get(i-1));
+        }
+        ArrayList<String> corrente=m.getMadredValoreCorrenteCavo();
+        for(int i=1;i<13;i++){
+            s.add(corrente.get(i-1));
+        }
+        temperatura=m.getMadredTemperatura();
+        for(int i=1;i<3;i++){
+            mMadredTemperatura[i-1].setText("Temperatura"+i+"\n  "+temperatura.get(i-1));
+        }
+        corrente=m.getMadredValoreCorrenteCavo();
+        for(int i=1;i<13;i++){
+            mMadredValoreCorrenteCavo[i-1].setText("Corrente Cavo"+i+"\n  "+corrente.get(i-1));
+        }
+        t.add(mMadredMacAdr);
+        t.add(mMadredDate);
+        t.add(mMadredHeader);
+        t.add(mMadredType);
+        t.add(mMadredRevision);
+        t.add(mMadredPosition);
+        t.add(mMadredDescription);
+        t.add(mMadredLongitude);
+        t.add(mMadredLatitude);
+        t.add(mMadredDigitalInfo);
+        t.add(mMadredWireDigitalInfo);
+        t.add(mMadredTemperatura[0]);
+        t.add(mMadredTemperatura[1]);
+        t.add(mMadredValoreCorrenteCavo[0]);
+        t.add(mMadredValoreCorrenteCavo[1]);
+        t.add(mMadredValoreCorrenteCavo[2]);
+        t.add(mMadredValoreCorrenteCavo[3]);
+        t.add(mMadredValoreCorrenteCavo[4]);
+        t.add(mMadredValoreCorrenteCavo[5]);
+        t.add(mMadredValoreCorrenteCavo[6]);
+        t.add(mMadredValoreCorrenteCavo[7]);
+        t.add(mMadredValoreCorrenteCavo[8]);
+        t.add(mMadredValoreCorrenteCavo[9]);
+        t.add(mMadredValoreCorrenteCavo[10]);
+        t.add(mMadredValoreCorrenteCavo[11]);
     }
     public void setViewSize(View v, int screenHeightDp, int screenWidthDp){
 
