@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="5dp">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".CmadExtendedInfoActivity">
@@ -497,7 +497,7 @@
             app:layout_constraintEnd_toStartOf="@+id/tempEst"
             app:layout_constraintTop_toBottomOf="@+id/cmadRevision" />
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_cmadExtendedInfo"
             android:layout_width="match_parent"
             android:layout_height="424dp"
@@ -507,5 +507,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fattorePotenzaL2" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

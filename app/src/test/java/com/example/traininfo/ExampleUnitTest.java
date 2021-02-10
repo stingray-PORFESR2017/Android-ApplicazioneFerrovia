@@ -1,4 +1,4 @@
-package com.example.traininfo;
+package cnr.isti.traininfo;
 
 import org.junit.Test;
 
