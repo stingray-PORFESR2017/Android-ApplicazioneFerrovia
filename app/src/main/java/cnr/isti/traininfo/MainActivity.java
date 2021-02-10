@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
                         // Log and toast
                        // String msg = getString(R.string.msg_token_fmt, token);
                         Log.d("FirebaseInstanceId", token);
-                        Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
                     }
                 });
 
