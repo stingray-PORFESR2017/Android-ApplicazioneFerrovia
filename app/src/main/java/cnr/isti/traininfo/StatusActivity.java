@@ -57,6 +57,10 @@ public class StatusActivity extends AppCompatActivity implements AsyncResponse, 
                             public void processFinish(LinkedList<String> output, int t) {
 
                             }
+                            @Override
+                            public void processFinish(Station output, int t) {
+
+                            }
 
                             @Override
                             public void processFinish(ArrayList<Cmad> output, int t) {
@@ -123,6 +127,11 @@ public class StatusActivity extends AppCompatActivity implements AsyncResponse, 
         intent.putParcelableArrayListExtra("madill", ml);
 
         startActivity(intent);
+    }
+
+    @Override
+    public void processFinish(Station output, int t) {
+
     }
 }
 

@@ -273,7 +273,10 @@ public class CmadExtendedInfoActivity extends AppCompatActivity implements CmadE
                                 public void processFinish(LinkedList<String> output, int t) {
 
                                 }
+                                @Override
+                                public void processFinish(Station output, int t) {
 
+                                }
                                 @Override
                                 public void processFinish(ArrayList<Cmad> output, int t) {
                                     ml = output.get(0);

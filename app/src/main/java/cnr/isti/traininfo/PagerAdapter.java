@@ -17,7 +17,8 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int i) {
         switch (i) {
-            case 0: return new DeparturesFrag();
+            //case 0: return new DeparturesFrag();
+            case 0: return new MeteoFrag();
             case 1: return new ArrivalsFrag();
             case 2: return new StatusFrag();
             case 3: return new InfoFrag();

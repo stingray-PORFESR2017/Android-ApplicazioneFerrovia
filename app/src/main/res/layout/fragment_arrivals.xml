@@ -6,8 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".ArrivalsFrag">
 
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
 
-    <EditText
+        />
+    <!--<EditText
         android:id="@+id/arrivals_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -69,5 +74,5 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         app:layout_constraintTop_toBottomOf="@+id/layout_recycler_arrivals" />
-
+    -->
 </androidx.constraintlayout.widget.ConstraintLayout>

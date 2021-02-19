@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -47,10 +49,10 @@ public class ArrivalsFrag extends Fragment {
             mnearPlaces.add(nearPlaces.get(i));
         }
 
-        mAdapterNearPlacesArrivals = new StationListAdapter(getActivity(), mnearPlaces, 1);
+       /* mAdapterNearPlacesArrivals = new StationListAdapter(getActivity(), mnearPlaces, 1);
         RecyclerView recyclerViewArrivals = viewF.findViewById(R.id.near_places_arrival);
         recyclerViewArrivals.setAdapter(mAdapterNearPlacesArrivals);
-        recyclerViewArrivals.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerViewArrivals.setLayoutManager(new LinearLayoutManager(getActivity()));*/
 
     }
 
@@ -60,6 +62,19 @@ public class ArrivalsFrag extends Fragment {
 
         // Inflate the layout for this fragment
         viewF = inflater.inflate(R.layout.fragment_arrivals, container, false);
+
+        WebView myWebView = (WebView) viewF.findViewById(R.id.webview);
+        myWebView.setWebViewClient(new WebViewClient()
+        {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url)
+            {
+                //view.loadUrl(url);
+                System.out.println("hello");
+                return false;
+            }
+        });
+        myWebView.loadUrl("https://stingray.isti.cnr.it:8443/serviziosupervisionestazione/pis/viaggiatreno/site/mobile/");//("http://www.viaggiatreno.it/vt_pax_internet/mobile/");
 
         return viewF;
     }

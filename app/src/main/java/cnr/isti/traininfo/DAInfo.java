@@ -74,4 +74,9 @@ public class DAInfo extends AppCompatActivity implements AsyncResponse {
     public void processFinish(ArrayList<Cmad> output, int t) {
 
     }
+
+    @Override
+    public void processFinish(Station output, int t) {
+
+    }
 }

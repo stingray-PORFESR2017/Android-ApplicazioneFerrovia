@@ -10,6 +10,7 @@ import android.os.Bundle;
 
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -24,6 +25,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 
+import com.cocoahero.android.geojson.GeoJSON;
+import com.cocoahero.android.geojson.GeoJSONObject;
+import com.google.android.gms.common.util.IOUtils;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,6 +39,16 @@ import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -42,14 +56,17 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
 
     private final ArrayList<String> mPlace = new ArrayList<>();
     ArrayAdapter mAdapterPlaces;
-
+    public static final float NEAR_KM = 10000;
     //Location
     private final int REQUEST_LOCATION_PERMISSION = 1;
     Location mLastLocation;
     FusedLocationProviderClient mFusedLocationClient;
     private final ArrayList<Station> mnearPlace = new ArrayList<>();
+
     StationListAdapter mAdapterNearPlacesDepartures;
     StationListAdapter mAdapterNearPlacesArrivals;
+
+    MeteoListAdapter mAdapterNearPlacesMeteo;
 
     public Context context = this;
 
@@ -78,8 +95,8 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
 
         TabLayout tabLayout = findViewById(R.id.tab_loyout);
 
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.departures_tab));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.arrivals_tab));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.meteo_tab));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.datitreno_tab));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.status_tab));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.info_tab));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.login_tab));
@@ -111,6 +128,8 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
+
+
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
                     @Override
@@ -136,10 +155,13 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
     }
 
     public void searchA(View view) {
-        EditText arrivalsText = findViewById(R.id.arrivals_text);
-        String station = arrivalsText.getText().toString();
-        Log.d("TAG", station);
-        new AsyncTaskTrain(this, station).execute(1, 1);
+       // EditText arrivalsText = findViewById(R.id.arrivals_text);
+       // String station = arrivalsText.getText().toString();
+       // Log.d("TAG", station);
+       // new AsyncTaskTrain(this, station).execute(1, 1);
+        WebView myWebView = (WebView) findViewById(R.id.webview);
+        myWebView.loadUrl("http://www.viaggiatreno.it/vt_pax_internet/mobile/");
+
     }
 
     public void searchD(View view) {
@@ -236,14 +258,14 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
         }
 
         if (t == 1) {
-            for (int i = 0; i < output.size(); i++) {
+           /* for (int i = 0; i < output.size(); i++) {
                 String station = output.get(i);
                 int rank = Integer.parseInt(station.substring(0,1));
                 Log.d("RANK", ""+rank+"d");
                 String stationName = station.substring(1);
-                //mnearPlace.add(stationName/*new Station(stationName, rank)*/);
+                //mnearPlace.add(stationName/*new Station(stationName, rank));
                 mnearPlace.add(new Station(stationName, rank));
-            }
+            }*/
 
             //Log.d("nearPlaces",mnearPlace.toString());
 
@@ -254,17 +276,29 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
                 recyclerViewDepartures.setLayoutManager(new LinearLayoutManager(this));
             }
             mAdapterNearPlacesArrivals = new StationListAdapter(this, mnearPlace, 1);
-            RecyclerView recyclerViewArrival = findViewById(R.id.near_places_arrival);
+
+            mAdapterNearPlacesMeteo = new MeteoListAdapter(this, mnearPlace);
+            RecyclerView recyclerViewMeteo = findViewById(R.id.near_places_meteo);
+            if(recyclerViewMeteo!=null) {
+                recyclerViewMeteo.setAdapter(mAdapterNearPlacesMeteo);
+                recyclerViewMeteo.setLayoutManager(new LinearLayoutManager(this));
+            }
+            /*RecyclerView recyclerViewArrival = findViewById(R.id.near_places_arrival);
             if(recyclerViewArrival!=null) {
                 recyclerViewArrival.setAdapter(mAdapterNearPlacesArrivals);
                 recyclerViewArrival.setLayoutManager(new LinearLayoutManager(this));
             }
-            NearPlaces.setNearPlaces(mnearPlace);
+            NearPlaces.setNearPlaces(mnearPlace);*/
         }
     }
 
     @Override
     public void processFinish(ArrayList<Cmad> output, int t) {
+
+    }
+
+    @Override
+    public void processFinish(Station output, int t) {
 
     }
 
@@ -283,6 +317,8 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
                                 Log.d("TAG", "Latitude: " + mLastLocation.getLatitude() + "  Longitude: " + mLastLocation.getLongitude() + "  time:" + mLastLocation.getTime());
                                 //NearPlaces.setLatitude(mLastLocation.getLatitude());
                                 //NearPlaces.setLongitude(mLastLocation.getLongitude());
+                                getListastazioni(context, mLastLocation.getLatitude(), mLastLocation.getLongitude());
+
                                 AsyncTaskTrain aTask = new AsyncTaskTrain(context, mLastLocation.getLatitude(), mLastLocation.getLongitude());
 
                                 aTask.delegate = (AsyncResponse) context;
@@ -290,6 +326,47 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
                             } else {
                                 Log.e("TAG", "error");
                             }
+                        }
+
+                        private void getListastazioni(Context context, double latitude, double longitude) {
+                            try {
+                            InputStream jsonFileInputStream = getResources().openRawResource(R.raw.stazioni_coord);
+
+                           /* BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(jsonFileInputStream));
+                            String message = org.apache.commons.io.IOUtils.toString(bufferedReader);
+                            JSONTokener tokener = new JSONTokener(message);
+
+                            JSONObject json = new JSONObject(tokener);
+
+                                GeoJSONObject geoJSON = GeoJSON.parse(json);*/
+                                GeoJSONObject geoJSON2 = GeoJSON.parse(jsonFileInputStream);
+
+                                JSONObject jsonObj = geoJSON2.toJSON();
+                                JSONArray ja_data = jsonObj.getJSONArray("features");
+                                int length = ja_data.length();
+                                for(int i=0; i<length; i++) {
+                                    JSONObject jsonObj2 = ja_data.getJSONObject(i);
+                                    JSONArray coordinate = jsonObj2.getJSONObject("geometry").getJSONArray("coordinates");
+                                    double logi = (double) coordinate.get(0);
+                                    double lati = (double) coordinate.get(1);
+                                    float[] result = new float[1];
+                                    Location.distanceBetween(latitude, longitude, lati, logi, result);
+                                    if (result[0] < NEAR_KM) {
+                                        Log.d("TAG", "Entro 10km");
+                                        JSONObject properties =  jsonObj2.getJSONObject("properties");
+                                        String n = (String) properties.get("name");
+                                        String ids = (String) properties.get("id_staz");
+                                        int idr = (int)properties.get("id_reg");
+
+                                        mnearPlace.add(new Station(n, 1, ids,idr));
+                                    }
+                                }
+                                //Log.e("TAG", "error");
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
                         }
                     });
         }

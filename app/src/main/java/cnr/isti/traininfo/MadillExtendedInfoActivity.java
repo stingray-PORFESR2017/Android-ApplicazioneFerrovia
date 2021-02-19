@@ -178,7 +178,10 @@ public class MadillExtendedInfoActivity extends AppCompatActivity {
                             public void processFinish(ArrayList<DATrain> output) {
 
                             }
+                            @Override
+                            public void processFinish(Station output, int t) {
 
+                            }
                             @Override
                             public void processFinish(LinkedList<String> output, int t) {
 

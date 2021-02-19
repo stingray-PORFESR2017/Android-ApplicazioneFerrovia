@@ -7,6 +7,13 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.cocoahero.android.geojson.GeoJSON;
+import com.cocoahero.android.geojson.GeoJSONObject;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -23,6 +30,7 @@ public class AsyncTaskTrain extends AsyncTask<Integer, String, String> {
 
     private Context context;
     private String station;
+    private Station s;
 
     private final ArrayList<DATrain> mTrainList = new ArrayList<>();
     private final LinkedList<String> mdetail = new LinkedList<>();
@@ -39,6 +47,12 @@ public class AsyncTaskTrain extends AsyncTask<Integer, String, String> {
         this.station = station;
     }
 
+    public AsyncTaskTrain(Context context, Station station) {
+        this.context = context;
+        this.s = station;
+        this.station = s.getStation();
+    }
+
     public AsyncTaskTrain(Context context) {
         this.context = context;
     }
@@ -51,6 +65,20 @@ public class AsyncTaskTrain extends AsyncTask<Integer, String, String> {
 
     @Override
     protected String doInBackground(Integer... integers) {
+        if(integers[0] == 100){
+            JSONObject meteo = Parser.getinfoMeteo(context, s);
+            if(meteo!=null){
+                Intent intent = new Intent(context, MeteoActivity.class);
+                intent.putExtra(STATION, station);
+                s.put(meteo);
+                intent.putExtra("STATIONDATA", s);
+                context.startActivity(intent);
+
+            }
+
+            return "meteo";
+        }
+
         if (integers[0] == 1) {
 
             //parser.getXML(context, "https://stingray.isti.cnr.it:8443/serviziosupervisionestazione/rfi/FrontEnd/Train/GetPlaces");
@@ -162,48 +190,47 @@ public class AsyncTaskTrain extends AsyncTask<Integer, String, String> {
         }
 
         if (integers[0] == 5) {
-            ArrayList<HashMap<String, String>> places = null;
-            try {
-                places = Parser.getStation(context);
-            } catch (/*Timeout*/Exception e) {
-                return "timeout";
-            } /*catch (InterruptedException e) {
-                return "interrupt";
-            } catch (ExecutionException e) {
-                return "execute";
-            }*/
+
 
             Log.d("TAG", "" + latitude);
             Log.d("TAg", "" + longitude);
+        try{
+            InputStream jsonFileInputStream = context.getResources().openRawResource(R.raw.stazioni_coord);
 
-            for (int i = 0; i < places.size(); i++) {
+                           /* BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(jsonFileInputStream));
+                            String message = org.apache.commons.io.IOUtils.toString(bufferedReader);
+                            JSONTokener tokener = new JSONTokener(message);
+
+                            JSONObject json = new JSONObject(tokener);
+
+                                GeoJSONObject geoJSON = GeoJSON.parse(json);*/
+            GeoJSONObject geoJSON2 = GeoJSON.parse(jsonFileInputStream);
+
+            JSONObject jsonObj = geoJSON2.toJSON();
+            JSONArray ja_data = jsonObj.getJSONArray("features");
+            int length = ja_data.length();
+            for(int i=0; i<length; i++) {
+                JSONObject jsonObj2 = ja_data.getJSONObject(i);
+                JSONArray coordinate = jsonObj2.getJSONObject("geometry").getJSONArray("coordinates");
+                double logi = (double) coordinate.get(0);
+                double lati = (double) coordinate.get(1);
                 float[] result = new float[1];
-
-                //Log.d("Latitude", places.get(i).get("Latitude"));
-                String latitudeString = places.get(i).get("Latitude");
-                //Log.d("Longitude", places.get(i).get("Longitude"));
-                String longitudeString = places.get(i).get("Longitude");
-
-                double latitudePlace;
-                if (latitudeString.isEmpty())
-                    continue;
-
-                latitudePlace = Double.parseDouble(places.get(i).get("Latitude"));
-
-                double longitudePlace;
-                if (longitudeString.isEmpty())
-                    continue;
-
-                longitudePlace = Double.parseDouble(places.get(i).get("Longitude"));
-
-                Location.distanceBetween(latitude, longitude, latitudePlace, longitudePlace, result);
+                Location.distanceBetween(latitude, longitude, lati, logi, result);
                 if (result[0] < NEAR_KM) {
                     Log.d("TAG", "Entro 10km");
-                    String stationName = places.get(i).get("Name");
-                    String stationRank = places.get(i).get("Category");
-                    mnearPlaces.add(stationRank + stationName);
+                    JSONObject properties =  jsonObj2.getJSONObject("properties");
+                    String n = (String) properties.get("name");
+                    String ids = (String) properties.get("id_staz");
+                    int idr = (int)properties.get("id_reg");
+
+                    mnearPlaces.add(n);
                 }
             }
+           // Log.e("TAG", "error");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
             return "places";
         }
@@ -253,6 +280,10 @@ public class AsyncTaskTrain extends AsyncTask<Integer, String, String> {
 
         if (result.equals("DA")) {
             delegate.processFinish(mTrainList);
+        }
+
+        if (result.equals("meteo")) {
+            //delegate.processFinish(s,0);
         }
 
         if (result.equals("detail")) {

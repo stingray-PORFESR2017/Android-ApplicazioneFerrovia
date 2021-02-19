@@ -10,6 +10,8 @@ import com.android.volley.toolbox.RequestFuture;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONObject;
+import org.json.JSONTokener;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -54,7 +56,7 @@ public class Parser {
         queue.add(req);
 
         try {
-            xmlString = future.get(10, TimeUnit.SECONDS);
+            xmlString = future.get(40, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
             throw e;
@@ -353,7 +355,7 @@ public class Parser {
         if(macAddr.equals("All"))
             url = "https://stingray.isti.cnr.it:8443/serviziosupervisionestazione/CMAD/ALL_LAST/";
         else
-            url = "https://stingray.isti.cnr.it:8443/serviziosupervisionestazione/CMAD/MAC_ADR_ALL/"+macAddr;
+            url = "https://stingray.isti.cnr.it:8443/serviziosupervisionestazione/CMAD/ALL_LAST/"+macAddr;
       //  String url = "https://stingray.isti.cnr.it:8443/serviziosupervisionestazione/CMAD/MAC_ADR_ALL/fffe00000007";
 
         try {
@@ -507,5 +509,28 @@ public class Parser {
         }
 
         return os.toString();
+    }
+
+    public static JSONObject getinfoMeteo(Context c , Station station) {
+        //viaggiatreno/datimeteo/0
+        try {
+            String baseurl = "https://stingray.isti.cnr.it:8443/serviziosupervisionestazione/pis/viaggiatreno/meteo/";
+            int idreg = station.getId_reg();
+            String idst = station.getId_staz();
+            getXML(c, baseurl + idreg);
+
+            if(xmlString!=null){
+                JSONTokener tokener = new JSONTokener(xmlString);
+
+                JSONObject json = new JSONObject(tokener);
+
+                JSONObject res = json.getJSONObject(idst);
+                return res;
+            }
+
+        }catch (Exception e){
+            Log.d("ERROR",e.getLocalizedMessage());
+        }
+        return  null;
     }
 }
