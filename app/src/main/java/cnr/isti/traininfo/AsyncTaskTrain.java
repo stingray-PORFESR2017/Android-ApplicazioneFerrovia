@@ -195,7 +195,7 @@ public class AsyncTaskTrain extends AsyncTask<Integer, String, String> {
             Log.d("TAG", "" + latitude);
             Log.d("TAg", "" + longitude);
         try{
-            InputStream jsonFileInputStream = context.getResources().openRawResource(R.raw.stazioni_coord);
+            InputStream jsonFileInputStream = context.getResources().openRawResource(R.raw.meteo_stazioni_coord);
 
                            /* BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(jsonFileInputStream));
                             String message = org.apache.commons.io.IOUtils.toString(bufferedReader);

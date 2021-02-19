@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mnearPlace.clear();
         setContentView(R.layout.activity_main);
 
         TabLayout tabLayout = findViewById(R.id.tab_loyout);
@@ -98,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
         tabLayout.addTab(tabLayout.newTab().setText(R.string.meteo_tab));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.datitreno_tab));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.status_tab));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.info_tab));
+       // tabLayout.addTab(tabLayout.newTab().setText(R.string.info_tab));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.login_tab));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.about_tab));
 
@@ -330,7 +331,7 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
 
                         private void getListastazioni(Context context, double latitude, double longitude) {
                             try {
-                            InputStream jsonFileInputStream = getResources().openRawResource(R.raw.stazioni_coord);
+                            InputStream jsonFileInputStream = getResources().openRawResource(R.raw.meteo_stazioni_coord);
 
                            /* BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(jsonFileInputStream));
                             String message = org.apache.commons.io.IOUtils.toString(bufferedReader);

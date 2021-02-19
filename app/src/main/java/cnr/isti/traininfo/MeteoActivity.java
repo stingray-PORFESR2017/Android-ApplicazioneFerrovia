@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -54,6 +55,22 @@ public class MeteoActivity extends AppCompatActivity implements AsyncResponse {
         tempooggi.setText("Temperatura Domani Pomeriggio: "+ s.getDatiMeteo().getDomaniTemperaturaPomeriggio()+" °C");
         tempooggi =  findViewById(R.id.textViewTempedomaniseraTemp);
         tempooggi.setText("Temperatura Domani Sera: "+ s.getDatiMeteo().getDomaniTemperaturaSera()+" °C");
+
+        ImageView img = findViewById(R.id.imageViewMeteo);
+        if( s.getDatiMeteo().getOggiTempo()<2){
+            img.setImageResource(R.drawable.rain);
+        }
+        if( s.getDatiMeteo().getOggiTempo()<4){
+            img.setImageResource(R.drawable.partly_cloudy);
+        }
+        if( s.getDatiMeteo().getOggiTempo()>6){
+            img.setImageResource(R.drawable.cloudy);
+        }
+        if( s.getDatiMeteo().getOggiTempo()>7){
+            img.setImageResource(R.drawable.sunny);
+        }
+
+
         setTitle("Meteo "+ station);
         Log.d("OnCreateMeteo", "process Fin");
 
