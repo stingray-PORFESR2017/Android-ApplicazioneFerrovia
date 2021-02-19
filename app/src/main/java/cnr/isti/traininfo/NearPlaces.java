@@ -98,7 +98,7 @@ public class NearPlaces {
 
     private static void getListastazioni( Context context,double latitude, double longitude) {
         try {
-            InputStream jsonFileInputStream = context.getResources().openRawResource(R.raw.stazioni_coord);
+            InputStream jsonFileInputStream = context.getResources().openRawResource(R.raw.meteo_stazioni_coord);
 
                            /* BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(jsonFileInputStream));
                             String message = org.apache.commons.io.IOUtils.toString(bufferedReader);
