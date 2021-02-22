@@ -1,6 +1,7 @@
 package cnr.isti.traininfo;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.provider.Settings;
 import android.util.Base64;
@@ -83,31 +84,14 @@ class AsyncTaskVerifyCredential extends AsyncTask<Void, Void, Boolean> {
                 String secureId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
 
 
-                final String[] finalToken = {""};
-                FirebaseInstanceId.getInstance().getInstanceId()
-                        .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                                if (!task.isSuccessful()) {
-                                    Log.w("FirebaseInstanceId", "getInstanceId failed", task.getException());
-                                    return;
-                                }
-
-                                // Get new Instance ID token
-
-                                finalToken[0] = task.getResult().getToken();
-
-                                // Log and toast
-                                // String msg = getString(R.string.msg_token_fmt, token);
-                                Log.d("FirebaseInstanceId", finalToken[0]);
-                                // Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                 String finalToken = "";
+                SharedPreferences p = context.getSharedPreferences("mypred", Context.MODE_PRIVATE);
+                finalToken =  p.getString("FirebaseInstanceId","");
 
                 String postData = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                         "<AuthInfo User=\""+ username_typed +"\">\n" +
                         "\t<Id>"+ secureId +"</Id>\n" +
-                        "\t<FirebaseToken>"+ finalToken[0] +"</FirebaseToken>\n" +
+                        "\t<FirebaseToken>"+ finalToken +"</FirebaseToken>\n" +
                         "</AuthInfo>";
                 Log.d("LoginManager", postData);
                 try {

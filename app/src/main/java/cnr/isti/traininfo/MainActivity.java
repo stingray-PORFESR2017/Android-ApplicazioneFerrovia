@@ -3,6 +3,7 @@ package cnr.isti.traininfo;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 
@@ -153,13 +154,17 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
 
                         // Get new Instance ID token
                         String token = task.getResult().getToken();
-
+                        SharedPreferences p = getSharedPreferences("mypred", Context.MODE_PRIVATE);
+                        p.edit().putString("FirebaseInstanceId", token).apply();
+                        //getActivity().getPreferences(Context.MODE_PRIVATE).edit().putString("fb", newToken).apply();
                         // Log and toast
                        // String msg = getString(R.string.msg_token_fmt, token);
                         Log.d("FirebaseInstanceId", token);
                        // Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
                     }
                 });
+
+
 
         //inizializzazione del login manager
         new LoginManager(getApplicationContext());
