@@ -6,11 +6,17 @@ import android.provider.Settings;
 import android.util.Base64;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.RequestFuture;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
@@ -75,11 +81,34 @@ class AsyncTaskVerifyCredential extends AsyncTask<Void, Void, Boolean> {
             @Override
             public byte[] getBody() {
                 String secureId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+
+
+                final String[] finalToken = {""};
+                FirebaseInstanceId.getInstance().getInstanceId()
+                        .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                                if (!task.isSuccessful()) {
+                                    Log.w("FirebaseInstanceId", "getInstanceId failed", task.getException());
+                                    return;
+                                }
+
+                                // Get new Instance ID token
+
+                                finalToken[0] = task.getResult().getToken();
+
+                                // Log and toast
+                                // String msg = getString(R.string.msg_token_fmt, token);
+                                Log.d("FirebaseInstanceId", finalToken[0]);
+                                // Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
                 String postData = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                         "<AuthInfo User=\""+ username_typed +"\">\n" +
-                        "\t<id>"+ secureId +"</id>\n" +
+                        "\t<Id>"+ secureId +"</Id>\n" +
+                        "\t<FirebaseToken>"+ finalToken[0] +"</FirebaseToken>\n" +
                         "</AuthInfo>";
-
                 Log.d("LoginManager", postData);
                 try {
                     return postData.getBytes(getParamsEncoding());

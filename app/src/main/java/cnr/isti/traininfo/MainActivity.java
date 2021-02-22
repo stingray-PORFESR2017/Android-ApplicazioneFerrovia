@@ -129,7 +129,18 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-
+        FirebaseMessaging.getInstance().subscribeToTopic("Stingray")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = "sottoscritto";
+                        if (!task.isSuccessful()) {
+                            msg = "nonsottoscritto";
+                        }
+                        Log.d("FirebaseInstance", msg);
+                        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
 
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
